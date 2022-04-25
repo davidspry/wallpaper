@@ -28,13 +28,31 @@ extension NSImage {
     }
     
     func resized(to targetSize: NSSize) -> NSImage? {
-        return NSImage(size: targetSize) {
-            NSGraphicsContext.current?.imageInterpolation = .high
-            
-            let targetRect = NSRect(origin: .zero, size: targetSize)
-            let sourceRect = NSRect(origin: .zero, size: self.size)
-            
-            self.draw(in: targetRect, from: sourceRect, operation: .copy, fraction: 1.0)
+        guard let representation = NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: Int(targetSize.width),
+            pixelsHigh: Int(targetSize.height),
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .deviceRGB,
+            bytesPerRow: 0,
+            bitsPerPixel: 0
+        ) else {
+            return nil
         }
+        
+        representation.size = targetSize
+        
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: representation)
+        self.draw(in: NSRect(origin: .zero, size: targetSize))
+        NSGraphicsContext.restoreGraphicsState()
+        
+        let resizedImage = NSImage(size: targetSize)
+        resizedImage.addRepresentation(representation)
+        
+        return resizedImage
     }
 }
