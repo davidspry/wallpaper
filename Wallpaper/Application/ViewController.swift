@@ -67,7 +67,8 @@ class ViewController: NSViewController {
                 let cgImages = ImageLoader.obtainImagesFromFileUrls(fileUrls)
                 let textures = cgImages.compactMap { cgImage -> MTLTexture? in
                     try? textureLoader.newTexture(cgImage: cgImage,
-                            options: [MTKTextureLoader.Option.generateMipmaps: NSNumber(booleanLiteral: true)])
+                                                  options: [MTKTextureLoader.Option.SRGB: false,
+                                                            MTKTextureLoader.Option.generateMipmaps: NSNumber(booleanLiteral: true)])
                 }
 
                 DispatchQueue.main.sync {
