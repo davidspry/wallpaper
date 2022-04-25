@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="U2F-zJ-gIi">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="Wallpaper" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Wallpaper" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="About Wallpaper" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Hide Wallpaper" keyEquivalent="h" id="Olw-nP-bQN">
+                                            <connections>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Quit Wallpaper" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="dMs-cI-mzQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                    <items>
+                                        <menuItem title="Select Images" keyEquivalent="o" id="KIf-Ii-5dP">
+                                            <connections>
+                                                <action selector="didSelectMenuItem:" target="Voe-Tx-rLC" id="VI6-u8-hYD"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save Image As…" keyEquivalent="s" id="Bw7-FT-i3A">
+                                            <connections>
+                                                <action selector="didSelectMenuItem:" target="Voe-Tx-rLC" id="goX-xB-S2t"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="View" id="H8h-7b-M4v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="View" id="HyV-fh-RgO">
+                                    <items>
+                                        <menuItem title="Hide Toolbar" keyEquivalent="t" id="dUc-AF-8Xb">
+                                            <connections>
+                                                <action selector="didSelectMenuItem:" target="Voe-Tx-rLC" id="VtB-xK-9ka"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
+                                        <menuItem title="Actual Size" alternate="YES" keyEquivalent="1" id="CyD-8O-9IA">
+                                            <connections>
+                                                <action selector="didSelectMenuItem:" target="Voe-Tx-rLC" id="rfn-Ui-Ops"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Default Size" alternate="YES" keyEquivalent="2" id="9iJ-6a-sXa">
+                                            <connections>
+                                                <action selector="didSelectMenuItem:" target="Voe-Tx-rLC" id="vtx-lz-AwI"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="V2X-w0-v1v"/>
+                                        <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="dU3-MA-1Rq"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="aUF-d1-5bR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                                        <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Wallpaper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="actualSizeItem" destination="CyD-8O-9IA" id="aOY-of-oOh"/>
+                        <outlet property="defaultSizeItem" destination="9iJ-6a-sXa" id="RI6-Vw-EpC"/>
+                        <outlet property="saveImageAsItem" destination="Bw7-FT-i3A" id="Dle-PX-KWS"/>
+                        <outlet property="selectImagesItem" destination="KIf-Ii-5dP" id="BiP-m3-u3N"/>
+                        <outlet property="toolbarVisibilityItem" destination="dUc-AF-8Xb" id="MMW-4S-6gS"/>
+                    </connections>
+                </customObject>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="W6Z-M4-9qE">
+            <objects>
+                <windowController id="U2F-zJ-gIi" customClass="WindowController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Wallpaper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="unified" titleVisibility="hidden" id="Yc6-Ts-e3A">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <view key="contentView" id="otl-gh-Pi4">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="T5h-qn-y5J">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="E3E6C504-F660-4C70-8BA3-05D927806C0D" label="Load Source Images" paletteLabel="Load Source Images" sizingBehavior="auto" id="B7s-2q-rz6">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="IPz-eR-QOr">
+                                        <rect key="frame" x="16" y="14" width="82" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Select Images" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jw2-23-7Ba">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressSelectImages:" target="U2F-zJ-gIi" id="I3u-o6-KsA"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="21E56A93-1170-4A1E-97B9-888EDEB0ACF9" label="Save Image" paletteLabel="Save Image" sizingBehavior="auto" id="cEq-gL-RbW">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="jUu-kB-lKg">
+                                        <rect key="frame" x="0.0" y="14" width="82" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Save Image" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tYE-cj-Pn0">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressSave:" target="U2F-zJ-gIi" id="oPS-E4-8hi"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="6F720D0E-B556-48D6-BC1C-6D54948E6A41" label="Edit Wallpaper" paletteLabel="Edit Wallpaper" sizingBehavior="auto" id="TG5-2U-y8g">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Qfl-mo-8Us">
+                                        <rect key="frame" x="1" y="14" width="82" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Edit" alternateTitle="Done" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="R1M-Oa-4Aw">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <action selector="didPressEdit:" target="U2F-zJ-gIi" id="53G-O0-xQE"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="smO-BK-2t2"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="smO-BK-2t2"/>
+                                <toolbarItem reference="B7s-2q-rz6"/>
+                                <toolbarItem reference="TG5-2U-y8g"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="U2F-zJ-gIi" id="uGZ-q7-evK"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <outlet property="selectSourcesButton" destination="IPz-eR-QOr" id="FVP-Y7-TKZ"/>
+                        <outlet property="toggleSidebarButton" destination="Qfl-mo-8Us" id="Ox9-99-fJ7"/>
+                        <segue destination="HCI-K6-ziR" kind="relationship" relationship="window.shadowedContentViewController" id="gMN-JJ-vb2"/>
+                    </connections>
+                </windowController>
+                <customObject id="VtZ-6N-q6b" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="220"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="gdk-EA-urJ">
+            <objects>
+                <splitViewController id="HCI-K6-ziR" customClass="SplitViewController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="OT3-bK-if3"/>
+                        <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="260" behavior="sidebar" id="iv3-Yx-8VG"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="v1M-qH-2FR">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </splitView>
+                    <connections>
+                        <segue destination="U2G-u9-0hy" kind="relationship" relationship="splitItems" id="qAe-zb-qxf"/>
+                        <segue destination="upA-1j-ff2" kind="relationship" relationship="splitItems" id="NtS-74-aam"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="pfj-AW-pbw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="683" y="220"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YiE-0V-Rk3">
+            <objects>
+                <viewController id="U2G-u9-0hy" customClass="ViewController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="fN0-R6-okB" customClass="MetalKitView" customModule="Wallpaper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-9F-Owo" customClass="LoadingAnimation" customModule="Wallpaper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Dwn-9F-Owo" firstAttribute="leading" secondItem="fN0-R6-okB" secondAttribute="leading" id="40l-yS-JrR"/>
+                            <constraint firstAttribute="bottom" secondItem="Dwn-9F-Owo" secondAttribute="bottom" id="RC4-m2-2ex"/>
+                            <constraint firstAttribute="trailing" secondItem="Dwn-9F-Owo" secondAttribute="trailing" id="eKe-7q-ffb"/>
+                            <constraint firstItem="Dwn-9F-Owo" firstAttribute="top" secondItem="fN0-R6-okB" secondAttribute="top" id="fr6-rQ-YvA"/>
+                        </constraints>
+                    </customView>
+                    <connections>
+                        <outlet property="loadingAnimation" destination="Dwn-9F-Owo" id="igM-3G-eBR"/>
+                        <outlet property="metalKitView" destination="fN0-R6-okB" id="ufs-UO-vxH"/>
+                    </connections>
+                </viewController>
+                <customObject id="AqJ-AN-85G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="220"/>
+        </scene>
+        <!--Settings Panel-->
+        <scene sceneID="vsB-ns-m6G">
+            <objects>
+                <viewController id="upA-1j-ff2" customClass="SettingsPanel" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <scrollView key="view" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="vCv-f2-PTb" userLabel="Scroll View">
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="421"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="0as-s6-rOD">
+                            <rect key="frame" x="0.0" y="0.0" width="351" height="421"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view id="Y4p-Tz-wFr">
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="406"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <gridView xPlacement="center" yPlacement="top" rowAlignment="firstBaseline" rowSpacing="8" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="de2-aQ-9tU" customClass="GridView" customModule="Wallpaper" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="-5" width="336" height="411"/>
+                                            <rows>
+                                                <gridRow topPadding="64" id="hOj-T0-hhE"/>
+                                                <gridRow id="yeA-Cq-7Qy"/>
+                                                <gridRow id="Vvi-cn-3oz"/>
+                                                <gridRow id="dzQ-kb-tz6"/>
+                                                <gridRow id="FpY-Ue-Tzy"/>
+                                                <gridRow topPadding="16" id="aF5-zY-OgR"/>
+                                                <gridRow id="qLP-Zp-aHH"/>
+                                                <gridRow id="Y6l-O5-9qi"/>
+                                                <gridRow id="N3K-0b-Z8X"/>
+                                                <gridRow id="5ep-ib-g6D"/>
+                                                <gridRow rowAlignment="none" bottomPadding="64" id="z2l-TP-xa5"/>
+                                            </rows>
+                                            <columns>
+                                                <gridColumn xPlacement="leading" leadingPadding="32" id="721-LB-z8l"/>
+                                                <gridColumn xPlacement="fill" trailingPadding="32" id="AB6-kp-BBI"/>
+                                            </columns>
+                                            <gridCells>
+                                                <gridCell row="hOj-T0-hhE" column="721-LB-z8l" headOfMergedCell="0Jh-hV-JeP" id="0Jh-hV-JeP">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="71j-fM-BEJ">
+                                                        <rect key="frame" x="30" y="331" width="112" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Tiling Properties" id="leT-de-oXm">
+                                                            <font key="font" metaFont="systemBold"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="hOj-T0-hhE" column="AB6-kp-BBI" headOfMergedCell="0Jh-hV-JeP" id="hNb-ef-RwI"/>
+                                                <gridCell row="yeA-Cq-7Qy" column="721-LB-z8l" headOfMergedCell="A8j-1s-eTH" id="A8j-1s-eTH">
+                                                    <box key="contentView" horizontalHuggingPriority="245" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="IDk-5x-Qeo">
+                                                        <rect key="frame" x="32" y="320" width="272" height="5"/>
+                                                    </box>
+                                                </gridCell>
+                                                <gridCell row="yeA-Cq-7Qy" column="AB6-kp-BBI" headOfMergedCell="A8j-1s-eTH" id="a5b-dE-qim"/>
+                                                <gridCell row="Vvi-cn-3oz" column="721-LB-z8l" id="K2a-9Z-roh">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-pL-GcT">
+                                                        <rect key="frame" x="30" y="296" width="75" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Tiling mode" id="gSU-71-7Kb">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="Vvi-cn-3oz" column="AB6-kp-BBI" id="jQs-UY-WTQ">
+                                                    <popUpButton key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pt2-Hl-mfW">
+                                                        <rect key="frame" x="202" y="290" width="105" height="25"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Equal widths" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TwY-oT-09w" id="wIh-UT-AXm">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="ioC-JN-mlA">
+                                                                <items>
+                                                                    <menuItem title="Equal widths" state="on" id="TwY-oT-09w"/>
+                                                                    <menuItem title="Equal heights" id="MqB-L3-hnb"/>
+                                                                    <menuItem title="Square Grid" id="wvd-kh-cz1"/>
+                                                                    <menuItem title="Circle Grid" id="fgh-hS-CG8"/>
+                                                                    <menuItem title="Hexagon Grid" id="YdY-ha-D3i"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="didSelectTilingMode:" target="upA-1j-ff2" id="fij-RG-TDj"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </gridCell>
+                                                <gridCell row="dzQ-kb-tz6" column="721-LB-z8l" id="F1u-dw-v1C">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HeZ-QD-sld">
+                                                        <rect key="frame" x="30" y="263" width="83" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Tile size limit" id="OWT-RR-Cj2">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="dzQ-kb-tz6" column="AB6-kp-BBI" id="W9h-rG-nZT">
+                                                    <slider key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4j7-mk-X3t">
+                                                        <rect key="frame" x="202" y="261" width="104" height="24"/>
+                                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="96" maxValue="1056" doubleValue="160" tickMarkPosition="above" numberOfTickMarks="16" allowsTickMarkValuesOnly="YES" sliderType="linear" id="u1Y-kD-2bN"/>
+                                                        <connections>
+                                                            <action selector="didChangeTileSize:" target="upA-1j-ff2" id="bhM-bi-gYT"/>
+                                                        </connections>
+                                                    </slider>
+                                                </gridCell>
+                                                <gridCell row="FpY-Ue-Tzy" column="721-LB-z8l" id="aUw-RS-DAZ">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aUd-rM-kLx">
+                                                        <rect key="frame" x="30" y="233" width="79" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Tile padding" id="IQw-Mu-Iut">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="FpY-Ue-Tzy" column="AB6-kp-BBI" id="9L3-Kn-XAS">
+                                                    <slider key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="482-ha-EcP">
+                                                        <rect key="frame" x="202" y="231" width="104" height="24"/>
+                                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="120" doubleValue="8" tickMarkPosition="above" numberOfTickMarks="16" allowsTickMarkValuesOnly="YES" sliderType="linear" id="VTG-c2-WMx"/>
+                                                        <connections>
+                                                            <action selector="didChangePadding:" target="upA-1j-ff2" id="zYe-c8-Wgv"/>
+                                                        </connections>
+                                                    </slider>
+                                                </gridCell>
+                                                <gridCell row="aF5-zY-OgR" column="721-LB-z8l" headOfMergedCell="DLa-kT-MDg" id="DLa-kT-MDg">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Bq-xw-NNk">
+                                                        <rect key="frame" x="30" y="193" width="115" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Image Properties" id="Ht6-a9-g59">
+                                                            <font key="font" metaFont="systemBold"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="aF5-zY-OgR" column="AB6-kp-BBI" headOfMergedCell="DLa-kT-MDg" id="oIc-IB-6ck"/>
+                                                <gridCell row="qLP-Zp-aHH" column="721-LB-z8l" headOfMergedCell="zUS-Wy-laX" id="zUS-Wy-laX">
+                                                    <box key="contentView" horizontalHuggingPriority="245" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="PSj-Ad-YaK">
+                                                        <rect key="frame" x="32" y="182" width="272" height="5"/>
+                                                    </box>
+                                                </gridCell>
+                                                <gridCell row="qLP-Zp-aHH" column="AB6-kp-BBI" headOfMergedCell="zUS-Wy-laX" id="ZSJ-dc-k0e"/>
+                                                <gridCell row="Y6l-O5-9qi" column="721-LB-z8l" id="HWS-E3-efh">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1uZ-9t-TqY">
+                                                        <rect key="frame" x="30" y="160" width="109" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Lock aspect ratio" id="6oj-Mc-wQd">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="Y6l-O5-9qi" column="AB6-kp-BBI" id="qgm-UZ-L7F">
+                                                    <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACO-k3-hof">
+                                                        <rect key="frame" x="202" y="159" width="104" height="18"/>
+                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="TFk-yE-FaD">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                </gridCell>
+                                                <gridCell row="N3K-0b-Z8X" column="721-LB-z8l" id="rrD-am-NKw">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uQL-1N-IzJ">
+                                                        <rect key="frame" x="30" y="134" width="78" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Image width" id="4a0-k0-9Bw">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="N3K-0b-Z8X" column="AB6-kp-BBI" id="QTc-ZA-Nbh">
+                                                    <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dyv-a7-vc1">
+                                                        <rect key="frame" x="204" y="131" width="100" height="21"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Image width" drawsBackground="YES" usesSingleLineMode="YES" id="bwc-xR-DW7">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="o7K-gL-662"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <action selector="didChangeImageSize:" target="upA-1j-ff2" id="D5o-FP-a8U"/>
+                                                        </connections>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="5ep-ib-g6D" column="721-LB-z8l" id="W3P-KQ-ddp">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-7o-4IV">
+                                                        <rect key="frame" x="30" y="105" width="83" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Image height" id="KYv-4t-JMr">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="5ep-ib-g6D" column="AB6-kp-BBI" id="6IR-6N-W8K">
+                                                    <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M0e-hr-ISY">
+                                                        <rect key="frame" x="204" y="102" width="100" height="21"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Image height" drawsBackground="YES" usesSingleLineMode="YES" id="MYW-Bw-tHQ">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="m32-Sp-zhP"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <action selector="didChangeImageSize:" target="upA-1j-ff2" id="03b-dk-XeW"/>
+                                                        </connections>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="z2l-TP-xa5" column="721-LB-z8l" id="Fd5-zx-2Og">
+                                                    <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8hG-gl-oD1">
+                                                        <rect key="frame" x="30" y="78" width="45" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Colour" id="fh7-j4-eZQ">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </gridCell>
+                                                <gridCell row="z2l-TP-xa5" column="AB6-kp-BBI" id="lPh-oA-njb">
+                                                    <colorWell key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="23C-uv-9Ua">
+                                                        <rect key="frame" x="204" y="64" width="100" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="cdm-WK-c7R"/>
+                                                        </constraints>
+                                                        <color key="color" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                                        <connections>
+                                                            <action selector="didChangeClearColour:" target="upA-1j-ff2" id="oHO-yc-7LK"/>
+                                                        </connections>
+                                                    </colorWell>
+                                                </gridCell>
+                                            </gridCells>
+                                        </gridView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="de2-aQ-9tU" firstAttribute="top" secondItem="Y4p-Tz-wFr" secondAttribute="top" id="cR4-dL-zeS"/>
+                                        <constraint firstItem="de2-aQ-9tU" firstAttribute="leading" secondItem="Y4p-Tz-wFr" secondAttribute="leading" id="kN4-Gd-Q1P"/>
+                                        <constraint firstAttribute="trailing" secondItem="de2-aQ-9tU" secondAttribute="trailing" id="rJe-xG-jyy"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="N8s-Ru-Zxj">
+                            <rect key="frame" x="-100" y="-100" width="450" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="NP7-zC-Yiw">
+                            <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <connections>
+                        <outlet property="colourWell" destination="23C-uv-9Ua" id="FsD-Gb-scW"/>
+                        <outlet property="gridView" destination="de2-aQ-9tU" id="UlT-NY-Him"/>
+                        <outlet property="imageHeightField" destination="M0e-hr-ISY" id="fbs-rr-SwI"/>
+                        <outlet property="imageWidthField" destination="Dyv-a7-vc1" id="isZ-Vi-sOi"/>
+                        <outlet property="lockAspectRatioSwitch" destination="ACO-k3-hof" id="4Pm-zl-36V"/>
+                        <outlet property="paddingSlider" destination="482-ha-EcP" id="QKO-IT-PBg"/>
+                        <outlet property="scrollView" destination="vCv-f2-PTb" id="zUU-Ue-bqI"/>
+                        <outlet property="tileSizeSlider" destination="4j7-mk-X3t" id="YOz-ea-NQP"/>
+                        <outlet property="tilingModeMenu" destination="pt2-Hl-mfW" id="B81-Pj-vz0"/>
+                    </connections>
+                </viewController>
+                <customObject id="Lv7-Gs-lpG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="813"/>
+        </scene>
+    </scenes>
+</document>
