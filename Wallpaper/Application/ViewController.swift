@@ -15,8 +15,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var loadingAnimation: LoadingAnimation!
     
     override func viewDidLoad() {
-        guard let screen = NSScreen.main?.frame else {
-            fatalError("A reference to the main screen could not be acquired.")
+        guard let nativeScreenSize = NSScreen.nativeSize() else {
+            fatalError("The native size of the screen could not be determined.")
         }
         
         metalKitView.sampleCount = 4
@@ -24,7 +24,7 @@ class ViewController: NSViewController {
         metalKitView.enableSetNeedsDisplay = true
         metalKitView.device = MTLCreateSystemDefaultDevice()
         
-        UserSettings.OutputSize = screen.size
+        UserSettings.OutputSize = nativeScreenSize
         
         renderer = Renderer(withMetalKitView: metalKitView)
         renderer?.mtkView(metalKitView, drawableSizeWillChange: metalKitView.drawableSize)

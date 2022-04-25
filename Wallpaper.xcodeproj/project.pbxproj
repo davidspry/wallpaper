@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14119BA7281681150029DB1D /* NSScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14119BA6281681150029DB1D /* NSScreenExtensions.swift */; };
 		1414AC2A2806FC5400D8D9A7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414AC292806FC5400D8D9A7 /* ImageSaver.swift */; };
 		1433A11928050FBD005C2ABD /* MTLTextureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433A11828050FBD005C2ABD /* MTLTextureExtensions.swift */; };
 		1433A1252805A587005C2ABD /* MTLClearColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433A1242805A587005C2ABD /* MTLClearColorExtensions.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14119BA6281681150029DB1D /* NSScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreenExtensions.swift; sourceTree = "<group>"; };
 		1414AC292806FC5400D8D9A7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		1433A11828050FBD005C2ABD /* MTLTextureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTextureExtensions.swift; sourceTree = "<group>"; };
 		1433A11D280515AB005C2ABD /* Shaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shaders.h; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				1499AE87280140E400D14B3F /* NSSizeExtensions.swift */,
 				149F23FB280D0F6A00BF56F2 /* NSViewExtensions.swift */,
 				146CC0FE2801290000D11461 /* SIMDFloat4x4Extensions.swift */,
+				14119BA6281681150029DB1D /* NSScreenExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				146CC0BE2801278200D11461 /* ViewController.swift in Sources */,
 				146CC0FF2801290000D11461 /* SIMDFloat4x4Extensions.swift in Sources */,
 				14ADA0352803FE9300044323 /* ImageSizeNumberFormatter.swift in Sources */,
+				14119BA7281681150029DB1D /* NSScreenExtensions.swift in Sources */,
 				149F23EF280D076500BF56F2 /* Loading.swift in Sources */,
 				1414AC2A2806FC5400D8D9A7 /* ImageSaver.swift in Sources */,
 				1499AE6E28013AAF00D14B3F /* MetalKitView.swift in Sources */,
