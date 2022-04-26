@@ -80,6 +80,6 @@ struct ImageLoader {
             NSImage(contentsOf: fileUrl.absoluteURL)?
                 .resized(withShortestSide: UserSettings.TextureShortestSide)?
                 .cgImage
-        }
+        }.filter { $0.width < 16384 && $0.height < 16384 }
     }
 }
