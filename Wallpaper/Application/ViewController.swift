@@ -32,6 +32,8 @@ class ViewController: NSViewController {
         metalKitView.delegate = renderer
         metalKitView.useTransparentClearColour()
         
+        metalKitView.overlayGridBackground()
+        
         super.viewDidLoad()
     }
 
@@ -77,6 +79,7 @@ class ViewController: NSViewController {
                     }
                     
                     renderer.sourceTextures = textures
+                    metalKitView.removeGridBackground()
                     metalKitView.useOpaqueClearColour()
                     metalKitView.needsDisplay = true
                 }

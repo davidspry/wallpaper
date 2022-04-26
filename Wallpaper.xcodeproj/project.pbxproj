@@ -22,6 +22,7 @@
 		146CC0FA280128C600D11461 /* ImageTiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0F9280128C600D11461 /* ImageTiler.swift */; };
 		146CC0FF2801290000D11461 /* SIMDFloat4x4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0FE2801290000D11461 /* SIMDFloat4x4Extensions.swift */; };
 		146CC111280129FC00D11461 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 146CC110280129FC00D11461 /* Shaders.metal */; };
+		148E57A728178422003D0D8D /* GridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E57A628178422003D0D8D /* GridPattern.swift */; };
 		1499AE6E28013AAF00D14B3F /* MetalKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE6D28013AAF00D14B3F /* MetalKitView.swift */; };
 		1499AE7328013B0C00D14B3F /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE7228013B0C00D14B3F /* SplitViewController.swift */; };
 		1499AE7828013BCF00D14B3F /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE7728013BCF00D14B3F /* SettingsPanel.swift */; };
@@ -81,6 +82,7 @@
 		146CC0F9280128C600D11461 /* ImageTiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTiler.swift; sourceTree = "<group>"; };
 		146CC0FE2801290000D11461 /* SIMDFloat4x4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDFloat4x4Extensions.swift; sourceTree = "<group>"; };
 		146CC110280129FC00D11461 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		148E57A628178422003D0D8D /* GridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPattern.swift; sourceTree = "<group>"; };
 		1499AE6D28013AAF00D14B3F /* MetalKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalKitView.swift; sourceTree = "<group>"; };
 		1499AE7228013B0C00D14B3F /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		1499AE7728013BCF00D14B3F /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				149F23F6280D087800BF56F2 /* DisplayTimer.swift */,
 				149F23EE280D076500BF56F2 /* Loading.swift */,
+				148E57A628178422003D0D8D /* GridPattern.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				1414AC2A2806FC5400D8D9A7 /* ImageSaver.swift in Sources */,
 				1499AE6E28013AAF00D14B3F /* MetalKitView.swift in Sources */,
 				14C5A5282807F1EA006FDCA1 /* NSImageExtensions.swift in Sources */,
+				148E57A728178422003D0D8D /* GridPattern.swift in Sources */,
 				149F23FC280D0F6A00BF56F2 /* NSViewExtensions.swift in Sources */,
 				149F23F7280D087800BF56F2 /* DisplayTimer.swift in Sources */,
 				1433A1252805A587005C2ABD /* MTLClearColorExtensions.swift in Sources */,

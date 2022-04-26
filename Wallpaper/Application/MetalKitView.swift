@@ -29,4 +29,22 @@ class MetalKitView: MTKView {
         clearColor = MTLClearColor.Make(from: UserSettings.ClearColour)
         renderer?.didChangeClearColour()
     }
+    
+    // MARK: - Grid Pattern Background
+    
+    var gridBackground: GridPattern?
+    
+    func overlayGridBackground() {
+        gridBackground = GridPattern(frame: frame)
+        
+        if let gridBackground = gridBackground {
+            addSubview(gridBackground)
+            gridBackground.pinToEdges(of: self)
+        }
+    }
+    
+    func removeGridBackground() {
+        gridBackground?.removeFromSuperview()
+    }
+    
 }

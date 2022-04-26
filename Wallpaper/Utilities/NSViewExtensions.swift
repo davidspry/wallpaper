@@ -16,6 +16,8 @@ extension NSView {
     }
     
     func pinToEdges(of view: NSView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: view.topAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
