@@ -30,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     @IBOutlet weak var selectImagesItem: NSMenuItem!
     @IBOutlet weak var saveImageAsItem: NSMenuItem!
     @IBOutlet weak var toolbarVisibilityItem: NSMenuItem!
+    @IBOutlet weak var sidebarVisibilityItem: NSMenuItem!
     @IBOutlet weak var actualSizeItem: NSMenuItem!
     @IBOutlet weak var defaultSizeItem: NSMenuItem!
     
@@ -43,19 +44,57 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     
     @objc
     public func toggleToolbarTransparency() {
-        windowController?.window?.titlebarAppearsTransparent = didToggleToolbarTransparency()
+        let isTransparent = didToggleToolbarTransparency()
+        windowController?.window?.titlebarAppearsTransparent = isTransparent
+        windowController?.window?.titleVisibility = isTransparent ? .hidden : .visible
+        
+        if let visibleItems = windowController?.window?.toolbar?.visibleItems {
+            for item in visibleItems {
+                item.view?.isHidden = isTransparent
+            }
+        }
+    }
+    
+    @objc
+    public func toggleSidebarVisibility() {
+        guard let windowController = windowController,
+              let splitViewController = windowController.splitView,
+              let settingsPanel = splitViewController.settingsPanel,
+              let settingsSplitViewItem = splitViewController.splitViewItem(for: settingsPanel) else {
+            return
+        }
+        
+        let isCollapsed = settingsSplitViewItem.isCollapsed
+        let shouldBeCollapsed = didToggleSidebarVisibility()
+        
+        if isCollapsed != shouldBeCollapsed {
+            splitViewController.toggleSidebar(nil)
+        }
     }
     
     @discardableResult
     private func didToggleToolbarTransparency() -> Bool {
         if toolbarVisibilityItem.state == .off {
             toolbarVisibilityItem.state = .on
-            toolbarVisibilityItem.title = "Show Toolbar"
-            return true
-        } else {
-            toolbarVisibilityItem.state = .off
             toolbarVisibilityItem.title = "Hide Toolbar"
             return false
+        } else {
+            toolbarVisibilityItem.state = .off
+            toolbarVisibilityItem.title = "Show Toolbar"
+            return true
+        }
+    }
+    
+    @discardableResult
+    private func didToggleSidebarVisibility() -> Bool {
+        if sidebarVisibilityItem.state == .off {
+            sidebarVisibilityItem.state = .on
+            sidebarVisibilityItem.title = "Hide Sidebar"
+            return false
+        } else {
+            sidebarVisibilityItem.state = .off
+            sidebarVisibilityItem.title = "Show Sidebar"
+            return true
         }
     }
     
@@ -64,6 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         case saveImageAsItem: rootViewController?.mainViewController?.saveImageToFilesystem()
         case selectImagesItem: rootViewController?.mainViewController?.loadImagesFromFilesystem()
         case toolbarVisibilityItem: toggleToolbarTransparency()
+        case sidebarVisibilityItem: toggleSidebarVisibility()
         case actualSizeItem: windowController?.updateWindowSize(matchingImageSize: UserSettings.OutputSize)
         case defaultSizeItem: windowController?.useDefaultWindowSize(reflectingImageSize: UserSettings.OutputSize)
         default: return

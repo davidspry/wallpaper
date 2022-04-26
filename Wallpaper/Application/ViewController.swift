@@ -115,6 +115,7 @@ class ViewController: NSViewController {
         let clickMenu = NSMenu(title: "Context")
         let saveImage = NSMenuItem(title: "Save Image As...", action: #selector(saveImageToFilesystem), keyEquivalent: "s")
         let toolbarItem = NSMenuItem()
+        let sidebarItem = NSMenuItem()
         
         clickMenu.autoenablesItems = false
         saveImage.isEnabled = !sourceTextures.isEmpty
@@ -124,10 +125,16 @@ class ViewController: NSViewController {
         toolbarItem.action = #selector(delegate.toggleToolbarTransparency)
         toolbarItem.keyEquivalent = delegate.toolbarVisibilityItem.keyEquivalent
         
+        sidebarItem.title = delegate.sidebarVisibilityItem.title
+        sidebarItem.state = delegate.sidebarVisibilityItem.state
+        sidebarItem.action = #selector(delegate.toggleSidebarVisibility)
+        sidebarItem.keyEquivalent = delegate.sidebarVisibilityItem.keyEquivalent
+        
         clickMenu.addItem(withTitle: "Select Images", action: #selector(loadImagesFromFilesystem), keyEquivalent: "o")
         clickMenu.addItem(saveImage)
         clickMenu.addItem(NSMenuItem.separator())
         clickMenu.addItem(toolbarItem)
+        clickMenu.addItem(sidebarItem)
         
         NSMenu.popUpContextMenu(clickMenu, with: event, for: metalKitView)
     }
