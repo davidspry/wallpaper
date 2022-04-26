@@ -9,6 +9,8 @@ import Cocoa
 
 extension NSView {
     func centre(in view: NSView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
