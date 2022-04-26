@@ -47,4 +47,41 @@ class MetalKitView: MTKView {
         gridBackground?.removeFromSuperview()
     }
     
+    // MARK: - NSDraggingDestination
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        registerForDraggedTypes([.URL, .fileURL])
+    }
+    
+    private func canSupportDraggingOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
+        guard let itemUrls = draggingInfo.draggingPasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL] else {
+            return false
+        }
+        
+        let fileUrls = ImageLoader.obtainAllFileUrlsFromUrls(itemUrls)
+        
+        return ImageLoader.urlsConainSupportedImageTypes(fileUrls)
+    }
+    
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return canSupportDraggingOperation(sender) ? .copy : .generic
+    }
+    
+    override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        return canSupportDraggingOperation(sender)
+    }
+    
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        guard let itemUrls = sender.draggingPasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL],
+              let viewController = viewController as? ViewController else {
+            return false
+        }
+        
+        let fileURls = ImageLoader.obtainAllFileUrlsFromUrls(itemUrls)
+        viewController.loadTextures(fromUrls: fileURls)
+        
+        return true
+    }
 }

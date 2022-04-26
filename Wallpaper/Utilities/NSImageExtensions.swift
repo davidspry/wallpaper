@@ -44,9 +44,9 @@ extension NSImage {
         }
         
         representation.size = targetSize
-        
         NSGraphicsContext.saveGraphicsState()
         NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: representation)
+        NSGraphicsContext.current?.imageInterpolation = .high
         self.draw(in: NSRect(origin: .zero, size: targetSize))
         NSGraphicsContext.restoreGraphicsState()
         

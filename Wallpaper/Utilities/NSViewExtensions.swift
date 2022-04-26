@@ -25,4 +25,18 @@ extension NSView {
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+    
+    weak var viewController: NSViewController? {
+        var parentResponder: NSResponder? = self.nextResponder
+        
+        while parentResponder != nil {
+            if let viewController = parentResponder as? NSViewController {
+                return viewController
+            }
+            
+            parentResponder = parentResponder?.nextResponder
+        }
+        
+        return nil
+    }
 }

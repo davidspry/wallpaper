@@ -51,33 +51,39 @@ class ViewController: NSViewController {
     }
 
     @objc func loadImagesFromFilesystem() {
+        ImageLoader.loadFileUrlsFromDirectory { [weak self] fileUrls in
+            self?.loadTextures(fromUrls: fileUrls)
+        }
+    }
+    
+    func loadTextures(fromUrls fileUrls: [URL]) {
         guard let renderer = renderer,
               let metalKitView = metalKitView,
               let metalKitDevice = metalKitView.device else {
             return
         }
-
+        
+        if let loadingAnimation = loadingAnimation {
+            loadingAnimation.isHidden = false
+            loadingAnimation.becomeVisibleAndAnimate()
+        }
+        
         let textureLoader = MTKTextureLoader(device: metalKitDevice)
-
-        ImageLoader.loadFileUrlsFromDirectory { [weak self] fileUrls in
-            if let loadingAnimation = self?.loadingAnimation {
-                loadingAnimation.isHidden = false
-                loadingAnimation.becomeVisibleAndAnimate()
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let cgImages = ImageLoader.obtainImagesFromFileUrls(fileUrls)
+            let textures = cgImages.compactMap { cgImage -> MTLTexture? in
+                try? textureLoader.newTexture(cgImage: cgImage,
+                                              options: [MTKTextureLoader.Option.SRGB: false,
+                                                        MTKTextureLoader.Option.generateMipmaps: NSNumber(booleanLiteral: true)])
             }
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                let cgImages = ImageLoader.obtainImagesFromFileUrls(fileUrls)
-                let textures = cgImages.compactMap { cgImage -> MTLTexture? in
-                    try? textureLoader.newTexture(cgImage: cgImage,
-                                                  options: [MTKTextureLoader.Option.SRGB: false,
-                                                            MTKTextureLoader.Option.generateMipmaps: NSNumber(booleanLiteral: true)])
-                }
 
-                DispatchQueue.main.sync {
-                    if let loadingAnimation = self?.loadingAnimation {
-                        loadingAnimation.stopAnimatingAndBecomeHidden()
-                    }
-                    
+            DispatchQueue.main.sync {
+                if let loadingAnimation = self?.loadingAnimation {
+                    loadingAnimation.stopAnimatingAndBecomeHidden()
+                }
+                
+                if !textures.isEmpty {
                     renderer.sourceTextures = textures
                     metalKitView.removeGridBackground()
                     metalKitView.useOpaqueClearColour()

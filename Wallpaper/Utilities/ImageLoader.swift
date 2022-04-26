@@ -47,7 +47,7 @@ struct ImageLoader {
         }
     }
     
-    private static func obtainAllFileUrlsFromUrls(_ urls: [URL]) -> [URL] {
+    public static func obtainAllFileUrlsFromUrls(_ urls: [URL]) -> [URL] {
         urls
             .compactMap { url in
                 if url.hasDirectoryPath {
@@ -59,6 +59,10 @@ struct ImageLoader {
                 }
             }
             .reduce([], +)
+    }
+    
+    public static func urlsConainSupportedImageTypes(_ urls: [URL]) -> Bool {
+        !urls.filter { imageExtensions.contains($0.pathExtension) }.isEmpty
     }
     
     private static func obtainUrlsFromDirectory(withUrl directory: URL) -> [URL]? {
