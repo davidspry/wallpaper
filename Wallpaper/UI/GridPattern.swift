@@ -17,7 +17,7 @@ class GridPattern: NSView {
         let rows = Int(ceil(bounds.height / size))
         let cols = Int(ceil(bounds.width / size))
         let path = NSBezierPath()
-        let outerSize = 16
+        let outerSize = 8
         
         path.lineWidth = 2.0
         path.lineJoinStyle = .round
@@ -42,7 +42,7 @@ class GridPattern: NSView {
         path.stroke()
         path.removeAllPoints()
         
-        NSColor.systemGray.withAlphaComponent(0.15).setStroke()
+        NSColor.systemGray.withAlphaComponent(0.1).setStroke()
         
         for row in stride(from: outerSize, to: rows, by: outerSize) {
             let source = NSPoint(x: 0, y: CGFloat(row) * size - 0.5)
