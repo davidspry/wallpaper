@@ -24,6 +24,12 @@ class SettingsPanel: NSViewController {
         lockAspectRatioSwitch.state == .on
     }
 
+    private func initialiseUserSettings() {
+        UserSettings.Padding = paddingSlider.floatValue
+        UserSettings.TileSize = tileSizeSlider.floatValue
+        UserSettings.TextureShortestSide = CGFloat(tileSizeSlider.maxValue)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +44,7 @@ class SettingsPanel: NSViewController {
         scrollView.horizontalScroller = nil
         scrollView.hasHorizontalScroller = false
 
-        UserSettings.TextureShortestSide = CGFloat(tileSizeSlider.maxValue)
+        initialiseUserSettings()
     }
 
     private func setRendererNeedsDisplay() {

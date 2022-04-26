@@ -23,11 +23,11 @@ enum TilingMode: Int {
 }
 
 struct UserSettings {
-    static var Padding: Float = 16
-    static var TileSize: Float = 200
-    static var TextureShortestSide: CGFloat = 1056
-    static var OutputSize: CGSize = CGSize(width: 2560, height: 1440)
-    static var LargestOutputSize: CGSize = CGSize(width: 7680, height: 7680)
+    static var Padding: Float = .zero
+    static var TileSize: Float = .zero
+    static var TextureShortestSide: CGFloat = .zero
     static var TilingMode: TilingMode = .equalWidths
     static var ClearColour: NSColor = NSColor(white: 0.9, alpha: 1.0)
+    static var OutputSize: CGSize = CGSize(width: 2560, height: 1440)
+    static var LargestOutputSize: CGSize = CGSize(width: 7680, height: 7680)
 }
