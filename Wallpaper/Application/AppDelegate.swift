@@ -45,8 +45,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     @objc
     public func toggleToolbarTransparency() {
         let isTransparent = didToggleToolbarTransparency()
-        windowController?.window?.titlebarAppearsTransparent = isTransparent
-        windowController?.window?.titleVisibility = isTransparent ? .hidden : .visible
+        
+        if #available(OSX 11.0, *) {
+            windowController?.window?.titlebarAppearsTransparent = isTransparent
+            windowController?.window?.titleVisibility = isTransparent ? .hidden : .visible
+        } else {
+            windowController?.window?.titlebarAppearsTransparent = isTransparent
+        }
         
         if let visibleItems = windowController?.window?.toolbar?.visibleItems {
             for item in visibleItems {
