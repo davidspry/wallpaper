@@ -71,7 +71,7 @@ class ViewController: NSViewController {
         let textureLoader = MTKTextureLoader(device: metalKitDevice)
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let cgImages = ImageLoader.obtainImagesFromFileUrls(fileUrls)
+            let cgImages = ImageLoader.obtainSupportedImagesFromFileUrls(fileUrls)
             let textures = cgImages.compactMap { cgImage -> MTLTexture? in
                 try? textureLoader.newTexture(cgImage: cgImage,
                                               options: [MTKTextureLoader.Option.SRGB: false,

@@ -8,7 +8,7 @@
 import Cocoa
 
 struct ImageLoader {
-    private static let imageExtensions: Set<String> = ["jpg", "jpeg", "png", "gif", "heic"]
+    private static let imageExtensions: Set<String> = ["jpg", "jpeg", "png", "gif", "heic", "tif", "tiff", "pdf"]
 
     public static func loadFileUrlsFromDirectory(then provideResults: @escaping ([URL]) -> Void) {
         if let window = NSApplication.shared.mainWindow {
@@ -28,7 +28,7 @@ struct ImageLoader {
                 if response == .OK {
                     let fileUrls = obtainAllFileUrlsFromUrls(panel.urls)
                         .sorted(by: { $0.lastPathComponent < $1.lastPathComponent })
-                    let images = obtainImagesFromFileUrls(fileUrls)
+                    let images = obtainSupportedImagesFromFileUrls(fileUrls)
                     provideResults(images)
                 }
             }
@@ -75,7 +75,7 @@ struct ImageLoader {
                 }
     }
     
-    public static func obtainImagesFromFileUrls(_ urls: [URL]) -> [CGImage] {
+    public static func obtainSupportedImagesFromFileUrls(_ urls: [URL]) -> [CGImage] {
         urls.compactMap { fileUrl in
             NSImage(contentsOf: fileUrl.absoluteURL)?
                 .resized(withShortestSide: UserSettings.TextureShortestSide)?
