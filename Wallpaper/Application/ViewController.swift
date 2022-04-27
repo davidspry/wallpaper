@@ -46,7 +46,7 @@ class ViewController: NSViewController {
     private func updateWindowShape() {
         if let window = self.view.window,
            let windowController = window.windowController as? WindowController {
-            windowController.updateWindowShape(reflectingImageSize: UserSettings.OutputSize)
+            windowController.useDefaultWindowSize(reflectingImageSize: UserSettings.OutputSize)
         }
     }
 

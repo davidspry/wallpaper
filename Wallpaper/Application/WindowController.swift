@@ -61,8 +61,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
         super.windowDidLoad()
         configureToolbarAppearance()
 
-        guard let screen = NSScreen.main?.frame,
-              let window = window,
+        guard let window = window,
               let splitViewController = contentViewController as? SplitViewController else {
             fatalError("NSWindowController could not be initialised.")
         }
@@ -71,8 +70,6 @@ class WindowController: NSWindowController, NSWindowDelegate {
         window.isMovableByWindowBackground = true
 
         splitView = splitViewController
-
-        useDefaultWindowSize(reflectingImageSize: screen.size)
     }
 
     public func useDefaultWindowSize(reflectingImageSize imageSize: NSSize) {
@@ -81,7 +78,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
             return
         }
 
-        let windowSize = NSSize(aspectRatio: imageSize, withHeight: screenFrame.height * 0.75)
+        let windowSize = NSSize(aspectRatio: imageSize, withHeight: screenFrame.height * 0.5)
         let windowRect = NSRect(size: min(imageSize, windowSize), centredIn: screenFrame)
 
         window.setFrame(windowRect, display: true, animate: true)
