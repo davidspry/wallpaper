@@ -22,8 +22,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
 
     @IBAction func didPressEdit(_ sender: NSButton) {
-        if let splitView = splitView {
-            splitView.toggleSidebar(sender)
+        if let delegate = NSApplication.shared.delegate as? AppDelegate {
+            delegate.toggleSidebarVisibility()
         }
     }
 

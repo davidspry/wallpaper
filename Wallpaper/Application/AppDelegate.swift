@@ -71,6 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         
         let isCollapsed = settingsSplitViewItem.isCollapsed
         let shouldBeCollapsed = didToggleSidebarVisibility()
+        windowController.toggleSidebarButton.state = isCollapsed ? .on : .off
         
         if isCollapsed != shouldBeCollapsed {
             splitViewController.toggleSidebar(nil)
