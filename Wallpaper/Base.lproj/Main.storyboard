@@ -341,9 +341,9 @@
                                                                 <items>
                                                                     <menuItem title="Equal widths" state="on" id="TwY-oT-09w"/>
                                                                     <menuItem title="Equal heights" id="MqB-L3-hnb"/>
-                                                                    <menuItem title="Square Grid" id="wvd-kh-cz1"/>
-                                                                    <menuItem title="Circle Grid" id="fgh-hS-CG8"/>
-                                                                    <menuItem title="Hexagon Grid" id="YdY-ha-D3i"/>
+                                                                    <menuItem title="Square tiles" id="wvd-kh-cz1"/>
+                                                                    <menuItem title="Circular tiles" id="fgh-hS-CG8"/>
+                                                                    <menuItem title="Hexagonal tiles" id="YdY-ha-D3i"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
