@@ -39,7 +39,7 @@ extension NSSize {
 
     init(aspectRatio: NSSize, withHeight targetHeight: CGFloat) {
         self.init(
-                width: aspectRatio.width * targetHeight / aspectRatio.height,
+                width: targetHeight / aspectRatio.aspectRatio,
                 height: targetHeight
         )
     }
