@@ -46,7 +46,7 @@ class ImageTiler {
     }
 
     public func tileImages() -> [TextureInstance] {
-        guard shouldRetile, !imageTextures.isEmpty else {
+        guard shouldRetile, imageTextures.isNotEmpty else {
             return tiledTextures
         }
 

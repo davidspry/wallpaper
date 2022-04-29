@@ -62,7 +62,7 @@ struct ImageLoader {
     }
     
     public static func urlsConainSupportedImageTypes(_ urls: [URL]) -> Bool {
-        !urls.filter { imageExtensions.contains($0.pathExtension) }.isEmpty
+        urls.filter { imageExtensions.contains($0.pathExtension) }.isNotEmpty
     }
     
     private static func obtainUrlsFromDirectory(withUrl directory: URL) -> [URL]? {

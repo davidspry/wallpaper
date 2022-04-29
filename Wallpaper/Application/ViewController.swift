@@ -83,7 +83,7 @@ class ViewController: NSViewController {
                     loadingAnimation.stopAnimatingAndBecomeHidden()
                 }
                 
-                if !textures.isEmpty {
+                if textures.isNotEmpty {
                     renderer.sourceTextures = textures
                     metalKitView.removeGridBackground()
                     metalKitView.useOpaqueClearColour()
@@ -118,7 +118,7 @@ class ViewController: NSViewController {
         let sidebarItem = NSMenuItem()
         
         clickMenu.autoenablesItems = false
-        saveImage.isEnabled = !sourceTextures.isEmpty
+        saveImage.isEnabled = sourceTextures.isNotEmpty
         
         toolbarItem.title = delegate.toolbarVisibilityItem.title
         toolbarItem.state = delegate.toolbarVisibilityItem.state

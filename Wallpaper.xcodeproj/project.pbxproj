@@ -38,6 +38,7 @@
 		14ADA0352803FE9300044323 /* ImageSizeNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADA0342803FE9300044323 /* ImageSizeNumberFormatter.swift */; };
 		14ADA03A2803FEAE00044323 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADA0392803FEAE00044323 /* GridView.swift */; };
 		14C5A5282807F1EA006FDCA1 /* NSImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5A5272807F1EA006FDCA1 /* NSImageExtensions.swift */; };
+		14F63B34281BB59E00CA2D54 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */; };
 		6210AEDCD0F5205857BC9835 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6210A7BFDB5F8FEC789CDCCB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		14ADA0342803FE9300044323 /* ImageSizeNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeNumberFormatter.swift; sourceTree = "<group>"; };
 		14ADA0392803FEAE00044323 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		14C5A5272807F1EA006FDCA1 /* NSImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtensions.swift; sourceTree = "<group>"; };
+		14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		6210A7BFDB5F8FEC789CDCCB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 				149F23FB280D0F6A00BF56F2 /* NSViewExtensions.swift */,
 				146CC0FE2801290000D11461 /* SIMDFloat4x4Extensions.swift */,
 				14119BA6281681150029DB1D /* NSScreenExtensions.swift */,
+				14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				146CC111280129FC00D11461 /* Shaders.metal in Sources */,
 				146CC0FA280128C600D11461 /* ImageTiler.swift in Sources */,
 				1499AE8328013FD900D14B3F /* WindowController.swift in Sources */,
+				14F63B34281BB59E00CA2D54 /* CollectionExtensions.swift in Sources */,
 				14ADA03A2803FEAE00044323 /* GridView.swift in Sources */,
 				146CC0BC2801278200D11461 /* AppDelegate.swift in Sources */,
 				1499AE912801418800D14B3F /* NSRectExtensions.swift in Sources */,

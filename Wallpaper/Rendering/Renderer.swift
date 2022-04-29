@@ -210,7 +210,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
         for tiledTexture in imageTiler.tileImages() {
             guard case let texture = tiledTexture.texture,
-                  case let instances = tiledTexture.tiles, !instances.isEmpty,
+                  case let instances = tiledTexture.tiles, instances.isNotEmpty,
                   let imageSize = instances.first?.size else {
                 continue
             }

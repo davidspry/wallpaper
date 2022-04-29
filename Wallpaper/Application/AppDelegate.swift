@@ -122,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             menuItem == saveImageAsItem {
             guard let mainViewController = rootViewController?.mainViewController,
                   let renderer = mainViewController.renderer,
-                  !renderer.sourceTextures.isEmpty else {
+                  renderer.sourceTextures.isNotEmpty else {
                 return false
             }
             
