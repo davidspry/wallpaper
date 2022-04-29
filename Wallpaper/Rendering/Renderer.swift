@@ -289,12 +289,13 @@ class Renderer: NSObject, MTKViewDelegate {
                     )
         }
 
-        initialiseTexturesForOffscreenRendering()
-        initialiseOffscreenRenderPipelineState()
-        initialiseOnscreenRenderPipelineState()
-        initialiseRenderPassDescriptorForOffscreenTexture()
-
-        setShouldRedraw()
+        if sourceTextures.isNotEmpty {
+            initialiseTexturesForOffscreenRendering()
+            initialiseOffscreenRenderPipelineState()
+            initialiseOnscreenRenderPipelineState()
+            initialiseRenderPassDescriptorForOffscreenTexture()
+            setShouldRedraw()
+        }
     }
 
     /// This method should be called when the desired clear colour is changed in order that it can be propagated to the offscreen render pass descriptor.
