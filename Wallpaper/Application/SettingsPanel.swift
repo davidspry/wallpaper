@@ -117,13 +117,17 @@ class SettingsPanel: NSViewController {
 
         let newAspectRatio = newSize.aspectRatio
         let previousAspectRatio = UserSettings.OutputSize.aspectRatio
-
+        
         if aspectRatioIsLocked, sender == imageWidthField {
-            UserSettings.OutputSize.width = newSize.width
-            UserSettings.OutputSize.height = newSize.width * previousAspectRatio
+            let minimumSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: 1)
+            let maximumSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: UserSettings.LargestOutputSize.height)
+            let desiredSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: newSize.width)
+            UserSettings.OutputSize = desiredSize.bounded(between: minimumSize...maximumSize)
         } else if aspectRatioIsLocked, sender == imageHeightField {
-            UserSettings.OutputSize.height = newSize.height
-            UserSettings.OutputSize.width = newSize.height / previousAspectRatio
+            let minimumSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: 1)
+            let maximumSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: UserSettings.LargestOutputSize.width)
+            let desiredSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: newSize.height)
+            UserSettings.OutputSize = desiredSize.bounded(between: minimumSize...maximumSize)
         } else {
             UserSettings.OutputSize = newSize
         }
