@@ -81,8 +81,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
         let windowSize = NSSize(aspectRatio: imageSize, withHeight: screenFrame.height * 0.5)
         let windowRect = NSRect(size: min(imageSize, windowSize), centredIn: screenFrame)
 
-        window.setFrame(windowRect, display: true, animate: true)
         window.aspectRatio = imageSize
+        window.setFrame(windowRect, display: true, animate: true)
     }
 
     public func updateWindowShape(reflectingImageSize imageSize: NSSize) {

@@ -49,11 +49,6 @@ extension simd_float4x4 {
     }
     
     func translate(_ direction: SIMD3<Float>) -> simd_float4x4 {
-//        let result = simd_float4x4([SIMD4<Float>(1, 0, 0, direction.x),
-//                                    SIMD4<Float>(0, 1, 0, direction.y),
-//                                    SIMD4<Float>(0, 0, 1, direction.z),
-//                                    SIMD4<Float>(0, 0, 0, 1)])
-        
         let columns = simd_float4x4(SIMD4<Float>(1, 0, 0, 0),
                                     SIMD4<Float>(0, 1, 0, 0),
                                     SIMD4<Float>(0, 0, 1, 0),

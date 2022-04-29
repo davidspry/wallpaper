@@ -28,7 +28,7 @@ struct Tile {
     public func ModelMatrix(forOutputSize outputSize: CGSize) -> simd_float4x4 {
         matrix_identity_float4x4
                 .translate(SIMD3<Float>(Float(origin.x + (size.width - outputSize.width) / 2.0),
-                        Float(origin.y + (size.height - outputSize.height) / 2.0), 0))
+                                        Float(origin.y + (size.height - outputSize.height) / 2.0), 0))
                 .scale(SIMD3<Float>(Float(size.width / 2.0), Float(size.height / 2.0), 1.0))
     }
 }
