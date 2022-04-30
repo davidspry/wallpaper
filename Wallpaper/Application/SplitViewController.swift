@@ -26,7 +26,7 @@ class SplitViewController: NSSplitViewController {
         self.settingsPanel?.mainViewController = mainViewController
         self.mainViewController?.settingsPanel = settingsPanel
 
-        splitViewItem(for: settingsPanel)?.minimumThickness = 300
-        splitViewItem(for: settingsPanel)?.maximumThickness = 300
+        splitViewItem(for: settingsPanel)?.minimumThickness = 320
+        splitViewItem(for: settingsPanel)?.maximumThickness = 320
     }
 }
