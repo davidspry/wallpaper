@@ -114,13 +114,15 @@ class SettingsPanel: NSViewController {
 
         if aspectRatioIsLocked, source == imageWidthField {
             let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: newSize.width)
+            let scaledHeight = max(1, newScaledSize.height)
             
             imageWidthField.stringValue = newScaledSize.width.description
-            imageHeightField.stringValue = newScaledSize.height.description
+            imageHeightField.stringValue = scaledHeight.description
         } else if aspectRatioIsLocked, source == imageHeightField {
             let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: newSize.height)
+            let scaledWidth = max(1, newScaledSize.width)
             
-            imageWidthField.stringValue = newScaledSize.width.description
+            imageWidthField.stringValue = scaledWidth.description
             imageHeightField.stringValue = newScaledSize.height.description
         } else {
             imageWidthField.stringValue = newSize.width.description
@@ -147,7 +149,8 @@ class SettingsPanel: NSViewController {
         let desiredSize = CGSize(width: widthValue, height: heightValue)
         let boundedSize = aspectRatioIsLocked ?
             CGSize(aspectRatio: desiredSize, fittingWithin: UserSettings.LargestOutputSize) :
-            desiredSize.bounded(between: CGSize(squareWithSize: 1)...UserSettings.LargestOutputSize)
+            CGSize(width: desiredSize.width.bounded(between: 1...UserSettings.LargestOutputSize.width),
+                   height: desiredSize.height.bounded(between: 1...UserSettings.LargestOutputSize.height))
         
         UserSettings.OutputSize = boundedSize
         imageWidthField.stringValue = boundedSize.width.description
