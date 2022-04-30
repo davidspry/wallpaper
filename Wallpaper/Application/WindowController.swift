@@ -127,7 +127,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
             return
         }
         
-        let targetSize = CGSize(width: pixelSize.width * scalingFactor, height: pixelSize.height * scalingFactor)
+        let targetSize = CGSize(width: pixelSize.width / scalingFactor, height: pixelSize.height / scalingFactor)
         
         updateWindowSize(matchingSize: targetSize)
     }
