@@ -99,18 +99,36 @@ class WindowController: NSWindowController, NSWindowDelegate {
         window.setFrame(newWindowFrame, display: true, animate: true)
     }
 
-    public func updateWindowSize(matchingImageSize imageSize: NSSize) {
+    /// Set the window size to the given size but without accounting for macOS display scaling.
+    /// - Parameter targetSize: The desired size for the window.
+    
+    public func updateWindowSize(matchingSize targetSize: NSSize) {
         guard let window = window,
               let screenFrame = NSScreen.main?.frame else {
             return
         }
 
-        let deltaX = max(0, (window.frame.origin.x + imageSize.width) - screenFrame.width)
+        let deltaX = max(0, (window.frame.origin.x + targetSize.width) - screenFrame.width)
         let origin = CGPoint(x: max(0, window.frame.origin.x - deltaX),
-                y: max(0, window.frame.origin.y + window.frame.height - imageSize.height))
+                y: max(0, window.frame.origin.y + window.frame.height - targetSize.height))
 
-        let newWindowFrame = NSRect(origin: origin, size: imageSize)
-        window.aspectRatio = imageSize
+        let newWindowFrame = NSRect(origin: origin, size: targetSize)
+        window.aspectRatio = targetSize
         window.setFrame(newWindowFrame, display: true, animate: true)
+    }
+    
+    /// Set the window size to the given size in pixels, accounting for macOS display scaling.
+    /// - Parameter pixelSize: The desired size for the window in pixels.
+    
+    public func updateWindowSize(matchingPixelSize pixelSize: NSSize) {
+        guard let window = window,
+              let screen = window.screen,
+              let scalingFactor = screen.scalingFactor() else {
+            return
+        }
+        
+        let targetSize = CGSize(width: pixelSize.width * scalingFactor, height: pixelSize.height * scalingFactor)
+        
+        updateWindowSize(matchingSize: targetSize)
     }
 }

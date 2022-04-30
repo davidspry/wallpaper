@@ -110,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         case selectImagesItem: rootViewController?.mainViewController?.loadImagesFromFilesystem()
         case toolbarVisibilityItem: toggleToolbarTransparency()
         case sidebarVisibilityItem: toggleSidebarVisibility()
-        case actualSizeItem: windowController?.updateWindowSize(matchingImageSize: UserSettings.OutputSize)
+        case actualSizeItem: windowController?.updateWindowSize(matchingPixelSize: UserSettings.OutputSize)
         case defaultSizeItem: windowController?.useDefaultWindowSize(reflectingImageSize: UserSettings.OutputSize)
         default: return
         }

@@ -20,4 +20,12 @@ extension NSScreen {
         
         return NSSize(width: nativeDisplayMode.pixelWidth, height: nativeDisplayMode.pixelHeight)
     }
+    
+    func scalingFactor() -> CGFloat? {
+        guard let nativeSize = NSScreen.nativeSize() else {
+            return nil
+        }
+        
+        return nativeSize.height / self.frame.height
+    }
 }
