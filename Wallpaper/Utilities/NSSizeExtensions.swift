@@ -27,7 +27,7 @@ extension NSSize {
     }
     
     var longestDimension: CGFloat {
-        min(height, width)
+        max(height, width)
     }
     
     init(aspectRatio: NSSize, withWidth targetWidth: CGFloat) {
