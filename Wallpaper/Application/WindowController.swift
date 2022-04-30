@@ -91,8 +91,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
             return
         }
 
-        let newWindowFrameWidth = min(screenSize.width * 0.5, window.frame.height / (imageSize.height / imageSize.width))
-        let newWindowFrameHeight = newWindowFrameWidth * (imageSize.height / imageSize.width)
+        let newWindowFrameWidth = min(screenSize.width * 0.5, window.frame.height / imageSize.aspectRatio)
+        let newWindowFrameHeight = newWindowFrameWidth * imageSize.aspectRatio
         let newWindowFrame = NSRect(origin: window.frame.origin, size: NSSize(width: newWindowFrameWidth, height: newWindowFrameHeight))
 
         window.aspectRatio = imageSize
