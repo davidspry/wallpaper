@@ -15,8 +15,6 @@
 		146CC0BE2801278200D11461 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0BD2801278200D11461 /* ViewController.swift */; };
 		146CC0C02801278A00D11461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146CC0BF2801278A00D11461 /* Assets.xcassets */; };
 		146CC0C32801278A00D11461 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146CC0C12801278A00D11461 /* Main.storyboard */; };
-		146CC0CF2801278B00D11461 /* WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0CE2801278B00D11461 /* WallpaperTests.swift */; };
-		146CC0DA2801278B00D11461 /* WallpaperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0D92801278B00D11461 /* WallpaperUITests.swift */; };
 		146CC0EC2801282100D11461 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0EB2801282100D11461 /* ImageLoader.swift */; };
 		146CC0F52801287300D11461 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0F42801287300D11461 /* Renderer.swift */; };
 		146CC0FA280128C600D11461 /* ImageTiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CC0F9280128C600D11461 /* ImageTiler.swift */; };
@@ -28,9 +26,7 @@
 		1499AE7828013BCF00D14B3F /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE7728013BCF00D14B3F /* SettingsPanel.swift */; };
 		1499AE8328013FD900D14B3F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE8228013FD900D14B3F /* WindowController.swift */; };
 		1499AE88280140E400D14B3F /* NSSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE87280140E400D14B3F /* NSSizeExtensions.swift */; };
-		1499AE89280140E400D14B3F /* NSSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE87280140E400D14B3F /* NSSizeExtensions.swift */; };
 		1499AE912801418800D14B3F /* NSRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE902801418800D14B3F /* NSRectExtensions.swift */; };
-		1499AE922801418800D14B3F /* NSRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499AE902801418800D14B3F /* NSRectExtensions.swift */; };
 		149F23EF280D076500BF56F2 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F23EE280D076500BF56F2 /* Loading.swift */; };
 		149F23F7280D087800BF56F2 /* DisplayTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F23F6280D087800BF56F2 /* DisplayTimer.swift */; };
 		149F23FC280D0F6A00BF56F2 /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F23FB280D0F6A00BF56F2 /* NSViewExtensions.swift */; };
@@ -40,25 +36,9 @@
 		14C5A5282807F1EA006FDCA1 /* NSImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5A5272807F1EA006FDCA1 /* NSImageExtensions.swift */; };
 		14F63B34281BB59E00CA2D54 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */; };
 		14F63B39281BC36600CA2D54 /* ComparableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F63B38281BC36600CA2D54 /* ComparableExtensions.swift */; };
+		14F63B46281BCF0700CA2D54 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F63B45281BCF0700CA2D54 /* TextField.swift */; };
 		6210AEDCD0F5205857BC9835 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6210A7BFDB5F8FEC789CDCCB /* .gitignore */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		146CC0CB2801278A00D11461 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146CC0B02801278200D11461 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 146CC0B72801278200D11461;
-			remoteInfo = Wallpaper;
-		};
-		146CC0D62801278B00D11461 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146CC0B02801278200D11461 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 146CC0B72801278200D11461;
-			remoteInfo = Wallpaper;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		14119BA6281681150029DB1D /* NSScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreenExtensions.swift; sourceTree = "<group>"; };
@@ -73,12 +53,6 @@
 		146CC0C22801278A00D11461 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		146CC0C42801278A00D11461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146CC0C52801278A00D11461 /* Wallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wallpaper.entitlements; sourceTree = "<group>"; };
-		146CC0CA2801278A00D11461 /* WallpaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		146CC0CE2801278B00D11461 /* WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperTests.swift; sourceTree = "<group>"; };
-		146CC0D02801278B00D11461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		146CC0D52801278B00D11461 /* WallpaperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		146CC0D92801278B00D11461 /* WallpaperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperUITests.swift; sourceTree = "<group>"; };
-		146CC0DB2801278B00D11461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146CC0EB2801282100D11461 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		146CC0F42801287300D11461 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		146CC0F9280128C600D11461 /* ImageTiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTiler.swift; sourceTree = "<group>"; };
@@ -100,25 +74,12 @@
 		14C5A5272807F1EA006FDCA1 /* NSImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtensions.swift; sourceTree = "<group>"; };
 		14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		14F63B38281BC36600CA2D54 /* ComparableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExtensions.swift; sourceTree = "<group>"; };
+		14F63B45281BCF0700CA2D54 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6210A7BFDB5F8FEC789CDCCB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		146CC0B52801278200D11461 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		146CC0C72801278A00D11461 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		146CC0D22801278B00D11461 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -132,8 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				146CC0BA2801278200D11461 /* Wallpaper */,
-				146CC0CD2801278A00D11461 /* WallpaperTests */,
-				146CC0D82801278B00D11461 /* WallpaperUITests */,
 				146CC0B92801278200D11461 /* Products */,
 				6210A7BFDB5F8FEC789CDCCB /* .gitignore */,
 			);
@@ -143,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				146CC0B82801278200D11461 /* Wallpaper.app */,
-				146CC0CA2801278A00D11461 /* WallpaperTests.xctest */,
-				146CC0D52801278B00D11461 /* WallpaperUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,27 +121,11 @@
 			path = Wallpaper;
 			sourceTree = "<group>";
 		};
-		146CC0CD2801278A00D11461 /* WallpaperTests */ = {
-			isa = PBXGroup;
-			children = (
-				146CC0CE2801278B00D11461 /* WallpaperTests.swift */,
-				146CC0D02801278B00D11461 /* Info.plist */,
-			);
-			path = WallpaperTests;
-			sourceTree = "<group>";
-		};
-		146CC0D82801278B00D11461 /* WallpaperUITests */ = {
-			isa = PBXGroup;
-			children = (
-				146CC0D92801278B00D11461 /* WallpaperUITests.swift */,
-				146CC0DB2801278B00D11461 /* Info.plist */,
-			);
-			path = WallpaperUITests;
-			sourceTree = "<group>";
-		};
 		146CC0EA2801280900D11461 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */,
+				14F63B38281BC36600CA2D54 /* ComparableExtensions.swift */,
 				146CC0EB2801282100D11461 /* ImageLoader.swift */,
 				1414AC292806FC5400D8D9A7 /* ImageSaver.swift */,
 				14ADA0342803FE9300044323 /* ImageSizeNumberFormatter.swift */,
@@ -192,12 +133,10 @@
 				1433A11828050FBD005C2ABD /* MTLTextureExtensions.swift */,
 				14C5A5272807F1EA006FDCA1 /* NSImageExtensions.swift */,
 				1499AE902801418800D14B3F /* NSRectExtensions.swift */,
+				14119BA6281681150029DB1D /* NSScreenExtensions.swift */,
 				1499AE87280140E400D14B3F /* NSSizeExtensions.swift */,
 				149F23FB280D0F6A00BF56F2 /* NSViewExtensions.swift */,
 				146CC0FE2801290000D11461 /* SIMDFloat4x4Extensions.swift */,
-				14119BA6281681150029DB1D /* NSScreenExtensions.swift */,
-				14F63B33281BB59E00CA2D54 /* CollectionExtensions.swift */,
-				14F63B38281BC36600CA2D54 /* ComparableExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -221,6 +160,7 @@
 				1499AE6D28013AAF00D14B3F /* MetalKitView.swift */,
 				1499AE7728013BCF00D14B3F /* SettingsPanel.swift */,
 				1499AE7228013B0C00D14B3F /* SplitViewController.swift */,
+				14F63B45281BCF0700CA2D54 /* TextField.swift */,
 				14ADA02D2803E9A300044323 /* UserSettings.swift */,
 				146CC0BD2801278200D11461 /* ViewController.swift */,
 				1499AE8228013FD900D14B3F /* WindowController.swift */,
@@ -258,42 +198,6 @@
 			productReference = 146CC0B82801278200D11461 /* Wallpaper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		146CC0C92801278A00D11461 /* WallpaperTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 146CC0E12801278B00D11461 /* Build configuration list for PBXNativeTarget "WallpaperTests" */;
-			buildPhases = (
-				146CC0C62801278A00D11461 /* Sources */,
-				146CC0C72801278A00D11461 /* Frameworks */,
-				146CC0C82801278A00D11461 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				146CC0CC2801278A00D11461 /* PBXTargetDependency */,
-			);
-			name = WallpaperTests;
-			productName = WallpaperTests;
-			productReference = 146CC0CA2801278A00D11461 /* WallpaperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		146CC0D42801278B00D11461 /* WallpaperUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 146CC0E42801278B00D11461 /* Build configuration list for PBXNativeTarget "WallpaperUITests" */;
-			buildPhases = (
-				146CC0D12801278B00D11461 /* Sources */,
-				146CC0D22801278B00D11461 /* Frameworks */,
-				146CC0D32801278B00D11461 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				146CC0D72801278B00D11461 /* PBXTargetDependency */,
-			);
-			name = WallpaperUITests;
-			productName = WallpaperUITests;
-			productReference = 146CC0D52801278B00D11461 /* WallpaperUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -305,14 +209,6 @@
 				TargetAttributes = {
 					146CC0B72801278200D11461 = {
 						CreatedOnToolsVersion = 12.4;
-					};
-					146CC0C92801278A00D11461 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 146CC0B72801278200D11461;
-					};
-					146CC0D42801278B00D11461 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 146CC0B72801278200D11461;
 					};
 				};
 			};
@@ -330,8 +226,6 @@
 			projectRoot = "";
 			targets = (
 				146CC0B72801278200D11461 /* Wallpaper */,
-				146CC0C92801278A00D11461 /* WallpaperTests */,
-				146CC0D42801278B00D11461 /* WallpaperUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -347,20 +241,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		146CC0C82801278A00D11461 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		146CC0D32801278B00D11461 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -371,6 +251,7 @@
 				146CC0F52801287300D11461 /* Renderer.swift in Sources */,
 				146CC0BE2801278200D11461 /* ViewController.swift in Sources */,
 				146CC0FF2801290000D11461 /* SIMDFloat4x4Extensions.swift in Sources */,
+				14F63B46281BCF0700CA2D54 /* TextField.swift in Sources */,
 				14ADA0352803FE9300044323 /* ImageSizeNumberFormatter.swift in Sources */,
 				14119BA7281681150029DB1D /* NSScreenExtensions.swift in Sources */,
 				149F23EF280D076500BF56F2 /* Loading.swift in Sources */,
@@ -398,38 +279,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		146CC0C62801278A00D11461 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				146CC0CF2801278B00D11461 /* WallpaperTests.swift in Sources */,
-				1499AE89280140E400D14B3F /* NSSizeExtensions.swift in Sources */,
-				1499AE922801418800D14B3F /* NSRectExtensions.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		146CC0D12801278B00D11461 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				146CC0DA2801278B00D11461 /* WallpaperUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		146CC0CC2801278A00D11461 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 146CC0B72801278200D11461 /* Wallpaper */;
-			targetProxy = 146CC0CB2801278A00D11461 /* PBXContainerItemProxy */;
-		};
-		146CC0D72801278B00D11461 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 146CC0B72801278200D11461 /* Wallpaper */;
-			targetProxy = 146CC0D62801278B00D11461 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		146CC0C12801278A00D11461 /* Main.storyboard */ = {
@@ -602,90 +452,6 @@
 			};
 			name = Release;
 		};
-		146CC0E22801278B00D11461 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W2VC5BW82H;
-				INFOPLIST_FILE = WallpaperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = io.davidspry.WallpaperTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wallpaper.app/Contents/MacOS/Wallpaper";
-			};
-			name = Debug;
-		};
-		146CC0E32801278B00D11461 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W2VC5BW82H;
-				INFOPLIST_FILE = WallpaperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = io.davidspry.WallpaperTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wallpaper.app/Contents/MacOS/Wallpaper";
-			};
-			name = Release;
-		};
-		146CC0E52801278B00D11461 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W2VC5BW82H;
-				INFOPLIST_FILE = WallpaperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.davidspry.WallpaperUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Wallpaper;
-			};
-			name = Debug;
-		};
-		146CC0E62801278B00D11461 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W2VC5BW82H;
-				INFOPLIST_FILE = WallpaperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.davidspry.WallpaperUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Wallpaper;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -703,24 +469,6 @@
 			buildConfigurations = (
 				146CC0DF2801278B00D11461 /* Debug */,
 				146CC0E02801278B00D11461 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		146CC0E12801278B00D11461 /* Build configuration list for PBXNativeTarget "WallpaperTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				146CC0E22801278B00D11461 /* Debug */,
-				146CC0E32801278B00D11461 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		146CC0E42801278B00D11461 /* Build configuration list for PBXNativeTarget "WallpaperUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				146CC0E52801278B00D11461 /* Debug */,
-				146CC0E62801278B00D11461 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -16,8 +16,9 @@ class SettingsPanel: NSViewController {
     @IBOutlet weak var tileSizeSlider: NSSlider!
     @IBOutlet weak var paddingSlider: NSSlider!
     @IBOutlet weak var lockAspectRatioSwitch: NSButton!
-    @IBOutlet weak var imageWidthField: NSTextField!
-    @IBOutlet weak var imageHeightField: NSTextField!
+    @IBOutlet weak var imageWidthField: TextField!
+    @IBOutlet weak var imageHeightField: TextField!
+    @IBOutlet weak var applyImageSizeButton: NSButton!
     @IBOutlet weak var colourWell: NSColorWell!
 
     var aspectRatioIsLocked: Bool {
@@ -35,9 +36,13 @@ class SettingsPanel: NSViewController {
 
         let formatter = ImageSizeNumberFormatter()
         imageWidthField.formatter = formatter
-        imageHeightField.formatter = formatter
         imageWidthField.stringValue = UserSettings.OutputSize.width.description
+        imageWidthField.onTextChange = didUpdateImageSize(_:from:)
+        
+        imageHeightField.formatter = formatter
         imageHeightField.stringValue = UserSettings.OutputSize.height.description
+        imageHeightField.onTextChange = didUpdateImageSize(_:from:)
+        
         colourWell.color = UserSettings.ClearColour
 
         scrollView.documentView = gridView
@@ -96,49 +101,63 @@ class SettingsPanel: NSViewController {
         UserSettings.Padding = sender.floatValue
         setRendererNeedsDisplay()
     }
+    
+    private func didUpdateImageSize(_ stringValue: String, from source: TextField) {
+        guard let width = Int(imageWidthField.stringValue),
+              let height = Int(imageHeightField.stringValue) else {
+            applyImageSizeButton.isEnabled = false
+            return
+        }
+        
+        let newSize = CGSize(width: width, height: height)
+        applyImageSizeButton.isEnabled = newSize != UserSettings.OutputSize
 
-    @IBAction func didChangeImageSize(_ sender: NSTextField) {
-        guard let mainViewController = mainViewController,
+        if aspectRatioIsLocked, source == imageWidthField {
+            let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: newSize.width)
+            
+            imageWidthField.stringValue = newScaledSize.width.description
+            imageHeightField.stringValue = newScaledSize.height.description
+        } else if aspectRatioIsLocked, source == imageHeightField {
+            let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: newSize.height)
+            
+            imageWidthField.stringValue = newScaledSize.width.description
+            imageHeightField.stringValue = newScaledSize.height.description
+        } else {
+            imageWidthField.stringValue = newSize.width.description
+            imageHeightField.stringValue = newSize.height.description
+        }
+    }
+    
+    @IBAction func didSubmitActionFromTextField(_ sender: TextField) {
+        didApplyImageSize(applyImageSizeButton)
+    }
+    
+    @IBAction func didApplyImageSize(_ sender: NSButton) {
+        guard let window = NSApp.mainWindow,
+              let mainViewController = mainViewController,
               let renderer = mainViewController.renderer else {
             return assertionFailure("A reference to the renderer could not be acquired.")
         }
-
+        
         guard let widthValue = Int(imageWidthField.stringValue),
               let heightValue = Int(imageHeightField.stringValue) else {
             return assertionFailure("The given image size is not integral.")
         }
-
-        guard case let width = max(1, min(UserSettings.LargestOutputSize.width, CGFloat(widthValue))),
-              case let height = max(1, min(UserSettings.LargestOutputSize.height, CGFloat(heightValue))),
-              case let newSize = CGSize(width: width, height: height),
-              newSize != UserSettings.OutputSize else {
-            return
-        }
-
-        let newAspectRatio = newSize.aspectRatio
-        let previousAspectRatio = UserSettings.OutputSize.aspectRatio
         
-        if aspectRatioIsLocked, sender == imageWidthField {
-            let minimumSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: 1)
-            let maximumSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: UserSettings.LargestOutputSize.height)
-            let desiredSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: newSize.width)
-            UserSettings.OutputSize = desiredSize.bounded(between: minimumSize...maximumSize)
-        } else if aspectRatioIsLocked, sender == imageHeightField {
-            let minimumSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: 1)
-            let maximumSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: UserSettings.LargestOutputSize.width)
-            let desiredSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: newSize.height)
-            UserSettings.OutputSize = desiredSize.bounded(between: minimumSize...maximumSize)
-        } else {
-            UserSettings.OutputSize = newSize
-        }
-
-        imageWidthField.stringValue = UserSettings.OutputSize.width.description
-        imageHeightField.stringValue = UserSettings.OutputSize.height.description
+        let desiredSize = CGSize(width: widthValue, height: heightValue)
+        let boundedSize = aspectRatioIsLocked ?
+            CGSize(aspectRatio: desiredSize, fittingWithin: UserSettings.LargestOutputSize) :
+            desiredSize.bounded(between: CGSize(squareWithSize: 1)...UserSettings.LargestOutputSize)
+        
+        UserSettings.OutputSize = boundedSize
+        imageWidthField.stringValue = boundedSize.width.description
+        imageHeightField.stringValue = boundedSize.height.description
 
         renderer.didUpdateOutputImageSize()
         setRendererNeedsDisplay()
+        applyImageSizeButton.isEnabled = false
 
-        if newAspectRatio != previousAspectRatio {
+        if window.aspectRatio.aspectRatio != UserSettings.OutputSize.aspectRatio {
             updateWindowShapeToMatchImageSize()
         }
     }

@@ -12,7 +12,7 @@ class ImageSizeNumberFormatter: NumberFormatter {
                                        newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?,
                                        errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
         guard let parsedValue = Int(partialString), parsedValue > 0 else {
-            return false
+            return partialString.isEmpty
         }
 
         return true

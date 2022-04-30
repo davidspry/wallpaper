@@ -9,7 +9,7 @@ import Cocoa
 
 extension NSSize: Comparable {
     public static func <(lhs: CGSize, rhs: CGSize) -> Bool {
-        lhs.area < rhs.area
+        lhs.width < rhs.width || lhs.height < rhs.height
     }
 }
 
@@ -57,6 +57,14 @@ extension NSSize {
             self.init(aspectRatio: aspectRatio, withWidth: longestSide)
         } else {
             self.init(aspectRatio: aspectRatio, withHeight: longestSide)
+        }
+    }
+    
+    init(aspectRatio: NSSize, fittingWithin bounds: NSSize) {
+        if aspectRatio.width >= aspectRatio.height {
+            self.init(aspectRatio: aspectRatio, withWidth: min(aspectRatio.width, bounds.width))
+        } else {
+            self.init(aspectRatio: aspectRatio, withHeight: min(aspectRatio.height, bounds.height))
         }
     }
 
