@@ -8,7 +8,7 @@
 import Cocoa
 
 struct ImageLoader {
-    private static let imageExtensions: Set<String> = ["jpg", "jpeg", "png", "gif", "heic", "tif", "tiff", "pdf"]
+    private static let imageExtensions: Set<String> = ["jpg", "jpeg", "png", "gif", "heic", "tif", "tiff", "pdf", "ai", "psd", "eps"]
 
     public static func loadFileUrlsFromDirectory(then provideResults: @escaping ([URL]) -> Void) {
         if let window = NSApplication.shared.mainWindow {
