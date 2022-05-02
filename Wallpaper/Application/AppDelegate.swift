@@ -34,6 +34,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     @IBOutlet weak var actualSizeItem: NSMenuItem!
     @IBOutlet weak var defaultSizeItem: NSMenuItem!
     
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
