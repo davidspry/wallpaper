@@ -7,16 +7,17 @@
 
 import Cocoa
 
-struct ImageSaver {
-    static private let imageProperties: [NSBitmapImageRep.PropertyKey: Any] = [
-        .compressionFactor: NSNumber(floatLiteral: 1.0)
+enum ImageSaver {
+    private static let imageProperties: [NSBitmapImageRep.PropertyKey: Any] = [
+        .compressionFactor: NSNumber(floatLiteral: 1.0),
     ]
 
-    static public func saveImageAsFile(_ image: NSImage) {
+    public static func saveImageAsFile(_ image: NSImage) {
         guard let imageAsTiff = image.tiffRepresentation,
               let imageAsBitmap = NSBitmapImageRep(data: imageAsTiff),
               let imageAsData = imageAsBitmap.representation(using: .jpeg, properties: imageProperties),
-              let window = NSApplication.shared.mainWindow else {
+              let window = NSApplication.shared.mainWindow
+        else {
             return
         }
 
@@ -29,19 +30,19 @@ struct ImageSaver {
                     alert.runModal()
                     return
                 }
-                
+
                 do { try imageAsData.write(to: panelUrl) } catch {
                     print("Error: Could not write tiled image to file. \(error.localizedDescription)")
                 }
             }
         }
     }
-    
-    static private func didSetFileExtension(to fileExtension: String, forPanel panel: NSSavePanel) {
+
+    private static func didSetFileExtension(to fileExtension: String, forPanel panel: NSSavePanel) {
         panel.allowedFileTypes = [fileExtension]
     }
 
-    static private func SavePanel(overWindow window: NSWindow, then handleResult: @escaping (_ panel: NSSavePanel, _ response: NSApplication.ModalResponse) -> Void) {
+    private static func SavePanel(overWindow window: NSWindow, then handleResult: @escaping (_ panel: NSSavePanel, _ response: NSApplication.ModalResponse) -> Void) {
         let panel = NSSavePanel()
         panel.title = "Save Image"
         panel.nameFieldLabel = "Filename:"

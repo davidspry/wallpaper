@@ -8,7 +8,7 @@
 import Cocoa
 
 extension NSSize: Comparable {
-    public static func <(lhs: CGSize, rhs: CGSize) -> Bool {
+    public static func < (lhs: CGSize, rhs: CGSize) -> Bool {
         lhs.width < rhs.width || lhs.height < rhs.height
     }
 }
@@ -17,30 +17,30 @@ extension NSSize {
     var area: CGFloat {
         width * height
     }
-    
+
     var aspectRatio: CGFloat {
         height / width
     }
-    
+
     var shortestDimension: CGFloat {
         min(height, width)
     }
-    
+
     var longestDimension: CGFloat {
         max(height, width)
     }
-    
+
     init(aspectRatio: NSSize, withWidth targetWidth: CGFloat) {
         self.init(
-                width: targetWidth,
-                height: targetWidth * aspectRatio.aspectRatio
+            width: targetWidth,
+            height: targetWidth * aspectRatio.aspectRatio
         )
     }
 
     init(aspectRatio: NSSize, withHeight targetHeight: CGFloat) {
         self.init(
-                width: targetHeight / aspectRatio.aspectRatio,
-                height: targetHeight
+            width: targetHeight / aspectRatio.aspectRatio,
+            height: targetHeight
         )
     }
 
@@ -51,7 +51,7 @@ extension NSSize {
             self.init(aspectRatio: aspectRatio, withHeight: shortestSide)
         }
     }
-    
+
     init(aspectRatio: NSSize, withLongestSide longestSide: CGFloat) {
         if aspectRatio.width >= aspectRatio.height {
             self.init(aspectRatio: aspectRatio, withWidth: longestSide)
@@ -59,7 +59,7 @@ extension NSSize {
             self.init(aspectRatio: aspectRatio, withHeight: longestSide)
         }
     }
-    
+
     init(aspectRatio: NSSize, fittingWithin bounds: NSSize) {
         if aspectRatio.width >= aspectRatio.height {
             self.init(aspectRatio: aspectRatio, withWidth: min(aspectRatio.width, bounds.width))

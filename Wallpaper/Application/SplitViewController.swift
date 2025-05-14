@@ -16,7 +16,8 @@ class SplitViewController: NSSplitViewController {
 
         guard splitViewItems.count > 1,
               let mainViewController = splitViewItems[0].viewController as? ViewController,
-              let settingsPanel = splitViewItems[1].viewController as? SettingsPanel else {
+              let settingsPanel = splitViewItems[1].viewController as? SettingsPanel
+        else {
             fatalError("SplitViewController did not initialise correctly.")
         }
 

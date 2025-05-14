@@ -9,8 +9,9 @@ import Cocoa
 
 class ImageSizeNumberFormatter: NumberFormatter {
     override func isPartialStringValid(_ partialString: String,
-                                       newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?,
-                                       errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+                                       newEditingString _: AutoreleasingUnsafeMutablePointer<NSString?>?,
+                                       errorDescription _: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool
+    {
         guard let parsedValue = Int(partialString), parsedValue > 0 else {
             return partialString.isEmpty
         }

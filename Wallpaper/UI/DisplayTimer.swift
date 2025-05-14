@@ -13,7 +13,7 @@ import AppKit
 class DisplayTimer {
     let timer: CVDisplayLink
     let source: DispatchSourceUserDataAdd
-    var callback: Optional<() -> ()> = nil
+    var callback: Optional<() -> Void> = nil
     var isRunning: Bool {
         return CVDisplayLinkIsRunning(timer)
     }
@@ -24,13 +24,12 @@ class DisplayTimer {
     init?(onQueue queue: DispatchQueue = DispatchQueue.main) {
         source = DispatchSource.makeUserDataAddSource(queue: queue)
 
-        var timerReference: CVDisplayLink? = nil
+        var timerReference: CVDisplayLink?
         var displayLinkStatus = CVDisplayLinkCreateWithActiveCGDisplays(&timerReference)
 
         if let timer = timerReference {
             displayLinkStatus = CVDisplayLinkSetOutputCallback(timer, {
-                (timer: CVDisplayLink, currentTime: UnsafePointer<CVTimeStamp>, outputTime: UnsafePointer<CVTimeStamp>, _: CVOptionFlags, _: UnsafeMutablePointer<CVOptionFlags>, sourceUnsafeRaw: UnsafeMutableRawPointer?) -> CVReturn in
-
+                (_: CVDisplayLink, _: UnsafePointer<CVTimeStamp>, _: UnsafePointer<CVTimeStamp>, _: CVOptionFlags, _: UnsafeMutablePointer<CVOptionFlags>, sourceUnsafeRaw: UnsafeMutableRawPointer?) -> CVReturn in
                 if let sourceUnsafeRaw = sourceUnsafeRaw {
                     let sourceUnmanaged = Unmanaged<DispatchSourceUserDataAdd>.fromOpaque(sourceUnsafeRaw)
                     sourceUnmanaged.takeUnretainedValue().add(data: 1)
@@ -76,7 +75,7 @@ class DisplayTimer {
         }
 
         CVDisplayLinkStart(timer)
-        
+
         source.resume()
     }
 

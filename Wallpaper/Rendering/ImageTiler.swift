@@ -5,8 +5,8 @@
 //  Created by David Spry on 9/4/22.
 //
 
-import simd
 import MetalKit
+import simd
 
 struct TextureInstance {
     var tiles: [Tile] = []
@@ -27,9 +27,9 @@ struct Tile {
 
     public func ModelMatrix(forOutputSize outputSize: CGSize) -> simd_float4x4 {
         matrix_identity_float4x4
-                .translate(SIMD3<Float>(Float(origin.x + (size.width - outputSize.width) / 2.0),
-                                        Float(origin.y + (size.height - outputSize.height) / 2.0), 0))
-                .scale(SIMD3<Float>(Float(size.width / 2.0), Float(size.height / 2.0), 1.0))
+            .translate(SIMD3<Float>(Float(origin.x + (size.width - outputSize.width) / 2.0),
+                                    Float(origin.y + (size.height - outputSize.height) / 2.0), 0))
+            .scale(SIMD3<Float>(Float(size.width / 2.0), Float(size.height / 2.0), 1.0))
     }
 }
 
@@ -51,11 +51,11 @@ class ImageTiler {
         }
 
         switch UserSettings.TilingMode {
-            case .equalWidths: tileImagesWithEqualWidths()
-            case .equalHeights: tileImagesWithEqualHeights()
-            case .squareGrid: tileImagesAsGridWithEqualShortestSides()
-            case .circleGrid: tileImagesAsGridWithEqualShortestSides()
-            case .hexagonGrid: tileImagesAsInterlockingHexagonalGrid()
+        case .equalWidths: tileImagesWithEqualWidths()
+        case .equalHeights: tileImagesWithEqualHeights()
+        case .squareGrid: tileImagesAsGridWithEqualShortestSides()
+        case .circleGrid: tileImagesAsGridWithEqualShortestSides()
+        case .hexagonGrid: tileImagesAsInterlockingHexagonalGrid()
         }
 
         return tiledTextures
@@ -67,7 +67,7 @@ class ImageTiler {
 // MARK: - Layout with Equal Widths
 
 extension ImageTiler {
-    internal func tileImagesWithEqualWidths() {
+    func tileImagesWithEqualWidths() {
         tiledTextures = imageTextures.compactMap(TextureInstance.init)
 
         let tileWidth = UserSettings.TileSize + UserSettings.Padding
@@ -78,7 +78,7 @@ extension ImageTiler {
         var origin = CGPoint(x: (UserSettings.OutputSize.width - CGFloat(contentWidth)) / 2.0, y: 0)
         var offset = UserSettings.Padding
 
-        for column in 0..<numbedOfColumns {
+        for column in 0 ..< numbedOfColumns {
             var columnHeight = UserSettings.Padding
             var numberOfImages = 0
             let originalTextureIndex = textureIndex
@@ -99,7 +99,7 @@ extension ImageTiler {
             origin.y = CGFloat(Float(UserSettings.OutputSize.height) - columnHeight) / 2.0
             let columnDelta = CGFloat(UserSettings.Padding) + CGFloat(column) * CGFloat(tileWidth)
 
-            for _ in 0..<numberOfImages {
+            for _ in 0 ..< numberOfImages {
                 let texture = imageTextures[textureIndex]
                 let aspect = Float(texture.height) / Float(texture.width)
                 let height = UserSettings.TileSize * aspect
@@ -126,7 +126,7 @@ extension ImageTiler {
 // MARK: - Layout with Equal Heights
 
 extension ImageTiler {
-    internal func tileImagesWithEqualHeights() {
+    func tileImagesWithEqualHeights() {
         tiledTextures = imageTextures.compactMap(TextureInstance.init)
 
         let tileHeight = UserSettings.TileSize + UserSettings.Padding
@@ -137,7 +137,7 @@ extension ImageTiler {
         var origin = CGPoint(x: 0, y: (UserSettings.OutputSize.height - CGFloat(contentHeight)) / 2.0)
         var offset = UserSettings.Padding
 
-        for row in 0..<numbedOfRows {
+        for row in 0 ..< numbedOfRows {
             var rowWidth = UserSettings.Padding
             var numberOfImages = 0
             let originalTextureIndex = textureIndex
@@ -158,7 +158,7 @@ extension ImageTiler {
             origin.x = CGFloat(Float(UserSettings.OutputSize.width) - rowWidth) / 2.0
             let rowDelta = CGFloat(UserSettings.Padding) + CGFloat(row) * CGFloat(tileHeight)
 
-            for _ in 0..<numberOfImages {
+            for _ in 0 ..< numberOfImages {
                 let texture = imageTextures[textureIndex]
                 let aspect = Float(texture.width) / Float(texture.height)
                 let width = UserSettings.TileSize * aspect
@@ -185,7 +185,7 @@ extension ImageTiler {
 // MARK: - Grid with Equal Shortest Sides
 
 extension ImageTiler {
-    internal func tileImagesAsGridWithEqualShortestSides() {
+    func tileImagesAsGridWithEqualShortestSides() {
         tiledTextures = imageTextures.compactMap(TextureInstance.init)
 
         let tileSize = CGFloat(UserSettings.TileSize + UserSettings.Padding)
@@ -195,15 +195,15 @@ extension ImageTiler {
 
         var textureIndex = 0
         let origin = CGPoint(x: (UserSettings.OutputSize.width - contentsSize.width) / 2.0,
-                y: (UserSettings.OutputSize.height - contentsSize.height) / 2.0)
+                             y: (UserSettings.OutputSize.height - contentsSize.height) / 2.0)
 
-        for col in 0..<numberOfCols {
-            for row in 0..<numberOfRows {
+        for col in 0 ..< numberOfCols {
+            for row in 0 ..< numberOfRows {
                 let texture = imageTextures[textureIndex]
                 let textureSize = CGSize(aspectRatio: CGSize(width: texture.width, height: texture.height), withShortestSide: CGFloat(UserSettings.TileSize))
                 let textureDelta = CGSize(width: (textureSize.width - CGFloat(UserSettings.TileSize)) / 2.0, height: (textureSize.height - CGFloat(UserSettings.TileSize)) / 2.0)
                 let textureOrigin = CGPoint(x: origin.x + CGFloat(UserSettings.Padding) + CGFloat(col) * tileSize - textureDelta.width,
-                        y: origin.y + CGFloat(UserSettings.Padding) + CGFloat(row) * tileSize - textureDelta.height)
+                                            y: origin.y + CGFloat(UserSettings.Padding) + CGFloat(row) * tileSize - textureDelta.height)
                 let textureInstance = Tile(size: textureSize, origin: textureOrigin)
                 tiledTextures[textureIndex].tiles.append(textureInstance)
 
@@ -219,7 +219,7 @@ extension ImageTiler {
 // MARK: - Interlocking Grid with Equal Shortest Sides
 
 extension ImageTiler {
-    internal func tileImagesAsInterlockingHexagonalGrid() {
+    func tileImagesAsInterlockingHexagonalGrid() {
         tiledTextures = imageTextures.compactMap(TextureInstance.init)
 
         let apothemFactor = CGFloat(sqrt(3) / 2)
@@ -230,24 +230,24 @@ extension ImageTiler {
         let numberOfCols = Int(ceil((Float(UserSettings.OutputSize.width) + UserSettings.Padding) / Float(tileSize.width)))
         let numberOfRows = Int(ceil((Float(UserSettings.OutputSize.height) + UserSettings.Padding) / Float(tileSize.height)))
         let contentsSize = CGSize(width: CGFloat(UserSettings.Padding) + CGFloat(numberOfCols) * tileSize.width,
-                height: CGFloat(UserSettings.Padding) + CGFloat(numberOfRows) * tileSize.height)
+                                  height: CGFloat(UserSettings.Padding) + CGFloat(numberOfRows) * tileSize.height)
 
         var textureIndex = 0
         var shouldOffsetColumn = false
         let interlockingOffset = CGFloat(0.5 * tileSize.height)
         let origin = CGPoint(x: (UserSettings.OutputSize.width - contentsSize.width) / 2.0,
-                y: (UserSettings.OutputSize.height - contentsSize.height) / 2.0)
+                             y: (UserSettings.OutputSize.height - contentsSize.height) / 2.0)
 
-        for col in 0..<numberOfCols {
+        for col in 0 ..< numberOfCols {
             let adjustedNumberOfRows = numberOfRows + (shouldOffsetColumn ? 1 : 0)
             let adjustedInterlockingOffset = shouldOffsetColumn ? interlockingOffset : 0
 
-            for row in 0..<adjustedNumberOfRows {
+            for row in 0 ..< adjustedNumberOfRows {
                 let texture = imageTextures[textureIndex]
                 let textureSize = CGSize(aspectRatio: CGSize(width: texture.width, height: texture.height), withShortestSide: CGFloat(UserSettings.TileSize))
                 let textureDelta = CGSize(width: (textureSize.width - imageSize.width) / 2.0, height: (textureSize.height - imageSize.height) / 2.0)
                 let textureOrigin = CGPoint(x: origin.x + CGFloat(UserSettings.Padding) + CGFloat(col) * tileSize.width - textureDelta.width,
-                        y: origin.y + CGFloat(UserSettings.Padding) + CGFloat(row) * tileSize.height - textureDelta.height - adjustedInterlockingOffset)
+                                            y: origin.y + CGFloat(UserSettings.Padding) + CGFloat(row) * tileSize.height - textureDelta.height - adjustedInterlockingOffset)
                 let textureInstance = Tile(size: textureSize, origin: textureOrigin)
                 tiledTextures[textureIndex].tiles.append(textureInstance)
 

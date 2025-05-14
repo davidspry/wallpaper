@@ -10,35 +10,35 @@ import Cocoa
 extension NSView {
     func centre(in view: NSView) {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
-            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-    
+
     func pinToEdges(of view: NSView) {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
-    
+
     weak var viewController: NSViewController? {
-        var parentResponder: NSResponder? = self.nextResponder
-        
+        var parentResponder: NSResponder? = nextResponder
+
         while parentResponder != nil {
             if let viewController = parentResponder as? NSViewController {
                 return viewController
             }
-            
+
             parentResponder = parentResponder?.nextResponder
         }
-        
+
         return nil
     }
 }

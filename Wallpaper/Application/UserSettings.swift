@@ -22,12 +22,12 @@ enum TilingMode: Int {
     case hexagonGrid
 }
 
-struct UserSettings {
+enum UserSettings {
     static var Padding: Float = .zero
     static var TileSize: Float = .zero
     static var TextureShortestSide: CGFloat = .zero
     static var TilingMode: TilingMode = .equalWidths
-    static var ClearColour: NSColor = NSColor(white: 0.9, alpha: 1.0)
-    static var OutputSize: CGSize = CGSize(width: 2560, height: 1440)
-    static var LargestOutputSize: CGSize = CGSize(width: 7680, height: 7680)
+    static var ClearColour: NSColor = .init(white: 0.9, alpha: 1.0)
+    static var OutputSize: CGSize = .init(width: 2560, height: 1440)
+    static var LargestOutputSize: CGSize = .init(width: 7680, height: 7680)
 }

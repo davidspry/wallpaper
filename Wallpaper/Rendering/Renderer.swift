@@ -5,14 +5,14 @@
 //  Created by David Spry on 9/4/22.
 //
 
-import simd
 import MetalKit
+import simd
 
-fileprivate struct Uniforms {
+private struct Uniforms {
     var viewProjectionMatrix: simd_float4x4
 }
 
-fileprivate struct InstanceUniforms {
+private struct InstanceUniforms {
     var modelMatrix: simd_float4x4
 }
 
@@ -96,31 +96,32 @@ class Renderer: NSObject, MTKViewDelegate {
 
     private func fragmentShader(forMaskType maskType: MaskType) -> String {
         switch maskType {
-            case .None:
-                return "SampleTexture"
-            case .Square:
-                return "SampleTextureWithSquareMask"
-            case .Circle:
-                return "SampleTextureWithCircularMask"
-            case .Hexagon:
-                return "SampleTextureWithHexagonalMask"
+        case .None:
+            return "SampleTexture"
+        case .Square:
+            return "SampleTextureWithSquareMask"
+        case .Circle:
+            return "SampleTextureWithCircularMask"
+        case .Hexagon:
+            return "SampleTextureWithHexagonalMask"
         }
     }
 
     private func fragmentShader(forTilingMode tilingMode: TilingMode) -> String {
         switch tilingMode {
-            case .equalWidths: return fragmentShader(forMaskType: .None)
-            case .equalHeights: return fragmentShader(forMaskType: .None)
-            case .squareGrid: return fragmentShader(forMaskType: .Square)
-            case .circleGrid: return fragmentShader(forMaskType: .Circle)
-            case .hexagonGrid: return fragmentShader(forMaskType: .Hexagon)
+        case .equalWidths: return fragmentShader(forMaskType: .None)
+        case .equalHeights: return fragmentShader(forMaskType: .None)
+        case .squareGrid: return fragmentShader(forMaskType: .Square)
+        case .circleGrid: return fragmentShader(forMaskType: .Circle)
+        case .hexagonGrid: return fragmentShader(forMaskType: .Hexagon)
         }
     }
 
     private func initialiseOffscreenRenderPipelineState() {
         guard let metalKitDevice = device,
               let metalKitLibrary = metalKitDevice.makeDefaultLibrary(),
-              let texture = texture else {
+              let texture = texture
+        else {
             fatalError()
         }
 
@@ -148,7 +149,8 @@ class Renderer: NSObject, MTKViewDelegate {
 
     private func initialiseOnscreenRenderPipelineState() {
         guard let metalKitDevice = device,
-              let metalKitLibrary = metalKitDevice.makeDefaultLibrary() else {
+              let metalKitLibrary = metalKitDevice.makeDefaultLibrary()
+        else {
             fatalError()
         }
 
@@ -169,10 +171,11 @@ class Renderer: NSObject, MTKViewDelegate {
 
     /// Render a new frame.
 
-    internal func draw(in view: MTKView) {
+    func draw(in view: MTKView) {
         guard let metalKitDevice = device,
               let commandBuffer = commandQueue?.makeCommandBuffer(),
-              let renderPassDescriptor = view.currentRenderPassDescriptor else {
+              let renderPassDescriptor = view.currentRenderPassDescriptor
+        else {
             return
         }
 
@@ -183,7 +186,8 @@ class Renderer: NSObject, MTKViewDelegate {
         guard let uniformsBuffer = onscreenUniformsBuffer,
               let currentDrawable = view.currentDrawable,
               let onscreenRenderPipelineState = onscreenRenderPipelineState,
-              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
+              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+        else {
             return
         }
 
@@ -199,19 +203,21 @@ class Renderer: NSObject, MTKViewDelegate {
 
     /// Compute and render the image layout to the offscreen texture.
 
-    private func drawToOffscreenTexture(usingDevice metalKitDevice: MTLDevice) {
+    private func drawToOffscreenTexture(usingDevice _: MTLDevice) {
         guard let commandBuffer = commandQueue?.makeCommandBuffer(),
               let uniformsBuffer = offscreenUniformsBuffer,
               let offscreenRenderPipelineState = offscreenRenderPipelineState,
               let offscreenRenderPassDescriptor = offscreenRenderPassDescriptor,
-              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: offscreenRenderPassDescriptor) else {
+              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: offscreenRenderPassDescriptor)
+        else {
             return assertionFailure("The renderer could not create a render command encoder from the offscreen render pass descriptor.")
         }
 
         for tiledTexture in imageTiler.tileImages() {
             guard case let texture = tiledTexture.texture,
                   case let instances = tiledTexture.tiles, instances.isNotEmpty,
-                  let imageSize = instances.first?.size else {
+                  let imageSize = instances.first?.size
+            else {
                 continue
             }
 
@@ -224,7 +230,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
             if modelMatricesInBytes > 4096 {
                 commandEncoder.setVertexBuffer(device?.makeBuffer(bytes: modelMatrices, length: modelMatricesInBytes),
-                        offset: 0, index: 1)
+                                               offset: 0, index: 1)
             } else {
                 commandEncoder.setVertexBytes(modelMatrices, length: modelMatricesInBytes, index: 1)
             }
@@ -240,7 +246,8 @@ class Renderer: NSObject, MTKViewDelegate {
 
         guard let blitCommandEncoder = commandBuffer.makeBlitCommandEncoder(),
               let destinationTexture = offscreenTexture,
-              let intermediateTexture = texture else {
+              let intermediateTexture = texture
+        else {
             return assertionFailure("The blit command encoder could not be created.")
         }
 
@@ -256,21 +263,20 @@ class Renderer: NSObject, MTKViewDelegate {
         let imageScaleFactor = Float(newSize.height / UserSettings.OutputSize.height)
         let widthScaleFactor = Float(UserSettings.OutputSize.width / newSize.width)
         let scaleFactor = widthScaleFactor * imageScaleFactor
-        
+
         projectionMatrix = simd_float4x4(1).scale(SIMD3<Float>(scaleFactor, 1, 1))
     }
 
     /// This method will be called whenever the view's orientation or size changes.
 
-    internal func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    func mtkView(_: MTKView, drawableSizeWillChange size: CGSize) {
         updateProjectionMatrix(forViewportSize: size)
-        
+
         if let onscreenBuffer = onscreenUniformsBuffer {
             onscreenBuffer
                 .contents()
                 .copyMemory(from: [projectionMatrix],
-                            byteCount: MemoryLayout<Uniforms>.stride
-                )
+                            byteCount: MemoryLayout<Uniforms>.stride)
         }
     }
 
@@ -281,12 +287,11 @@ class Renderer: NSObject, MTKViewDelegate {
     func didUpdateOutputImageSize() {
         if let offscreenBuffer = offscreenUniformsBuffer {
             imageTiler.didChangeOutputImageSize()
-            
+
             offscreenBuffer
-                    .contents()
-                    .copyMemory(from: [imageTiler.viewProjectionMatrix],
-                                byteCount: MemoryLayout<Uniforms>.stride
-                    )
+                .contents()
+                .copyMemory(from: [imageTiler.viewProjectionMatrix],
+                            byteCount: MemoryLayout<Uniforms>.stride)
         }
 
         if sourceTextures.isNotEmpty {
@@ -306,7 +311,7 @@ class Renderer: NSObject, MTKViewDelegate {
             setShouldRedraw()
         }
     }
-    
+
     func didChangeClearColour(to clearColour: NSColor) {
         if let offscreenRenderPassDescriptor = offscreenRenderPassDescriptor {
             offscreenRenderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor.Make(from: clearColour)

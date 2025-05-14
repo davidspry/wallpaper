@@ -9,7 +9,7 @@ import Cocoa
 
 class TextField: NSTextField {
     var onTextChange: ((String, TextField) -> Void)? = nil
-    
+
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
         onTextChange?(stringValue, self)

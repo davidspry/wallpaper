@@ -10,16 +10,16 @@ import Cocoa
 class SettingsPanel: NSViewController {
     weak var mainViewController: ViewController?
 
-    @IBOutlet weak var scrollView: NSScrollView!
-    @IBOutlet weak var gridView: NSGridView!
-    @IBOutlet weak var tilingModeMenu: NSPopUpButton!
-    @IBOutlet weak var tileSizeSlider: NSSlider!
-    @IBOutlet weak var paddingSlider: NSSlider!
-    @IBOutlet weak var lockAspectRatioSwitch: NSButton!
-    @IBOutlet weak var imageWidthField: TextField!
-    @IBOutlet weak var imageHeightField: TextField!
-    @IBOutlet weak var applyImageSizeButton: NSButton!
-    @IBOutlet weak var colourWell: NSColorWell!
+    @IBOutlet var scrollView: NSScrollView!
+    @IBOutlet var gridView: NSGridView!
+    @IBOutlet var tilingModeMenu: NSPopUpButton!
+    @IBOutlet var tileSizeSlider: NSSlider!
+    @IBOutlet var paddingSlider: NSSlider!
+    @IBOutlet var lockAspectRatioSwitch: NSButton!
+    @IBOutlet var imageWidthField: TextField!
+    @IBOutlet var imageHeightField: TextField!
+    @IBOutlet var applyImageSizeButton: NSButton!
+    @IBOutlet var colourWell: NSColorWell!
 
     var aspectRatioIsLocked: Bool {
         lockAspectRatioSwitch.state == .on
@@ -38,11 +38,11 @@ class SettingsPanel: NSViewController {
         imageWidthField.formatter = formatter
         imageWidthField.stringValue = UserSettings.OutputSize.width.description
         imageWidthField.onTextChange = didUpdateImageSize(_:from:)
-        
+
         imageHeightField.formatter = formatter
         imageHeightField.stringValue = UserSettings.OutputSize.height.description
         imageHeightField.onTextChange = didUpdateImageSize(_:from:)
-        
+
         colourWell.color = UserSettings.ClearColour
 
         scrollView.documentView = gridView
@@ -55,7 +55,8 @@ class SettingsPanel: NSViewController {
     private func setRendererNeedsDisplay() {
         guard let mainViewController = mainViewController,
               let metalKitView = mainViewController.metalKitView,
-              let renderer = mainViewController.renderer else {
+              let renderer = mainViewController.renderer
+        else {
             return assertionFailure("References to the MTKView and Renderer could not be acquired.")
         }
 
@@ -65,18 +66,20 @@ class SettingsPanel: NSViewController {
 
     private func updateWindowShapeToMatchImageSize() {
         guard let window = NSApplication.shared.mainWindow,
-              let windowController = window.windowController as? WindowController else {
+              let windowController = window.windowController as? WindowController
+        else {
             fatalError("A reference to the WindowController could not be acquired.")
         }
 
         windowController.updateWindowShape(reflectingImageSize: UserSettings.OutputSize)
     }
 
-    @IBAction func didSelectTilingMode(_ sender: NSPopUpButton) {
+    @IBAction func didSelectTilingMode(_: NSPopUpButton) {
         guard let newTilingMode = TilingMode(rawValue: tilingModeMenu.indexOfSelectedItem), UserSettings.TilingMode != newTilingMode,
               let mainViewController = mainViewController,
               let renderer = mainViewController.renderer,
-              UserSettings.TilingMode != newTilingMode else {
+              UserSettings.TilingMode != newTilingMode
+        else {
             return
         }
 
@@ -101,27 +104,28 @@ class SettingsPanel: NSViewController {
         UserSettings.Padding = sender.floatValue
         setRendererNeedsDisplay()
     }
-    
-    private func didUpdateImageSize(_ stringValue: String, from source: TextField) {
+
+    private func didUpdateImageSize(_: String, from source: TextField) {
         guard let width = Int(imageWidthField.stringValue),
-              let height = Int(imageHeightField.stringValue) else {
+              let height = Int(imageHeightField.stringValue)
+        else {
             applyImageSizeButton.isEnabled = false
             return
         }
-        
+
         let newSize = CGSize(width: width, height: height)
         applyImageSizeButton.isEnabled = newSize != UserSettings.OutputSize
 
         if aspectRatioIsLocked, source == imageWidthField {
             let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withWidth: newSize.width)
             let scaledHeight = max(1, newScaledSize.height)
-            
+
             imageWidthField.stringValue = newScaledSize.width.description
             imageHeightField.stringValue = scaledHeight.description
         } else if aspectRatioIsLocked, source == imageHeightField {
             let newScaledSize = CGSize(aspectRatio: UserSettings.OutputSize, withHeight: newSize.height)
             let scaledWidth = max(1, newScaledSize.width)
-            
+
             imageWidthField.stringValue = scaledWidth.description
             imageHeightField.stringValue = newScaledSize.height.description
         } else {
@@ -129,29 +133,31 @@ class SettingsPanel: NSViewController {
             imageHeightField.stringValue = newSize.height.description
         }
     }
-    
-    @IBAction func didSubmitActionFromTextField(_ sender: TextField) {
+
+    @IBAction func didSubmitActionFromTextField(_: TextField) {
         didApplyImageSize(applyImageSizeButton)
     }
-    
-    @IBAction func didApplyImageSize(_ sender: NSButton) {
+
+    @IBAction func didApplyImageSize(_: NSButton) {
         guard let window = NSApp.mainWindow,
               let mainViewController = mainViewController,
-              let renderer = mainViewController.renderer else {
+              let renderer = mainViewController.renderer
+        else {
             return assertionFailure("A reference to the renderer could not be acquired.")
         }
-        
+
         guard let widthValue = Int(imageWidthField.stringValue),
-              let heightValue = Int(imageHeightField.stringValue) else {
+              let heightValue = Int(imageHeightField.stringValue)
+        else {
             return assertionFailure("The given image size is not integral.")
         }
-        
+
         let desiredSize = CGSize(width: widthValue, height: heightValue)
         let boundedSize = aspectRatioIsLocked ?
             CGSize(aspectRatio: desiredSize, fittingWithin: UserSettings.LargestOutputSize) :
-            CGSize(width: desiredSize.width.bounded(between: 1...UserSettings.LargestOutputSize.width),
-                   height: desiredSize.height.bounded(between: 1...UserSettings.LargestOutputSize.height))
-        
+            CGSize(width: desiredSize.width.bounded(between: 1 ... UserSettings.LargestOutputSize.width),
+                   height: desiredSize.height.bounded(between: 1 ... UserSettings.LargestOutputSize.height))
+
         UserSettings.OutputSize = boundedSize
         imageWidthField.stringValue = boundedSize.width.description
         imageHeightField.stringValue = boundedSize.height.description
@@ -168,12 +174,12 @@ class SettingsPanel: NSViewController {
     @IBAction func didChangeClearColour(_ sender: NSColorWell) {
         guard let mainViewController = mainViewController,
               let renderer = mainViewController.renderer,
-              UserSettings.ClearColour != sender.color else {
+              UserSettings.ClearColour != sender.color
+        else {
             return assertionFailure("References to the view controller and renderer could not be acquired.")
         }
 
         UserSettings.ClearColour = sender.color
         renderer.didChangeClearColour()
     }
-
 }
